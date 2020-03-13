@@ -21,13 +21,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true,
       unique: true,
-      autoIncrement: true,
+      // autoIncrement: true,
     },
     teacher: {
       type: DataTypes.INTEGER,
       allowNull: true,
       unique: true,
-      autoIncrement: true
+      // autoIncrement: true
     }
   });
 

@@ -21,8 +21,8 @@ module.exports = function (sequelize, DataTypes) {
         Teacher.hasMany(models.Class, {
             onDelete: "cascade"
         });
+        Teacher.belongsTo(models.User);
     };
     return Teacher;
 };
 
-Teacher.belongsTo(models.User);
