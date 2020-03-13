@@ -8,18 +8,18 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         date: {
-            type: DataTypes.DATETIME,
+            type: DataTypes.DATE,
             allowNull: false,
             validate: {
 
             }
         },
         start_time: {
-            type: DataTypes.DATETIME,
+            type: DataTypes.DATE,
             allowNull: false
         },
         end_time: {
-            type: DataTypes.DATETIME,
+            type: DataTypes.DATE,
             allowNull: false
         },
         capacity: {
