@@ -16,8 +16,21 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    student: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      unique: true,
+      // autoIncrement: true,
+    },
+    teacher: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      unique: true,
+      // autoIncrement: true
     }
   });
+
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);

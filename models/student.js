@@ -17,9 +17,9 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Student.associate = function (models) {
-
         Student.belongsToMany(models.Class, { through: "studentClasses" });
+        Student.belongsTo(models.User);
     };
-
     return Student;
 };
+
