@@ -2,7 +2,7 @@
 const db = require("../models");
 let passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -18,15 +18,61 @@ module.exports = function(app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
-    db.User.create({
-      email: req.body.email,
-      password: req.body.password
-    })
-      .then(function() {
-        res.redirect(307, "/api/login");
+    console.log(typeof req.body.instructor, req.body.instructor);
+
+    if (req.body.instructor === "true") {
+      // if instructor create instructor
+      db.Teacher.create({
+        email: req.body.email,
+        name: req.body.password,
+        User: {
+          email: req.body.email,
+          password: req.body.password,
+          teacher: req.body.instructor
+        }
+      }, {
+        include: [db.User]
       })
-      .catch(err => {
-        res.status(401).json(err);
+        .then(function () {
+          res.redirect(307, "/api/login");
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(401).json(err);
+        });
+
+    } else {
+      db.Student.create({
+        email: req.body.email,
+        name: req.body.password,
+        User: {
+          email: req.body.email,
+          password: req.body.password,
+          teacher: req.body.instructor
+        }
+      }, {
+        include: [db.User]
+      })
+        .then(function () {
+          res.redirect(307, "/api/login");
+        })
+        .catch(err => {
+          res.status(401).json(err);
+        });
+    }
+  });
+
+  // route for adding teacher row on signup
+  app.post("/api/addTeacher/:userid", (req, res) => {
+    let userid = req.params.userid;
+
+    db.User.findOne({
+      where: {
+        id: userid
+      }
+    })
+      .then((res) => {
+        console.log(res);
       });
   });
 
