@@ -8,94 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/85b973685b.js" crossorigin="anonymous"></script>
-    <title>Document</title>
-
-</head>
-
-<body>
-    <div class="container">
-        <nav class="navbar navbar-light bg-light">
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Log
-                in</button>
-
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3">
-                                <h2>Login Form</h2>
-                                <form class="login">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="email-input" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="password-input"
-                                            placeholder="Password">
-                                    </div>
-                                    <button type="submit" class="btn btn-default">Login</button>
-                                </form>
-                                <br />
-                                <p>Or sign up <a href="/">here</a></p> 
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg-2">Sign
-                up</button>
-
-            <div class="modal fade bd-example-modal-lg-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3">
-                                <h2>Sign Up Form</h2>
-                                <form class="signup">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="email-input" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="password-input"
-                                            placeholder="Password">
-                                    </div>
-                                    <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                        <span class="sr-only">Error:</span> <span class="msg"></span>
-                                    </div>
-                                    <button type="submit" class="btn btn-default">Sign Up</button>
-                                </form>
-                                <br />
-                                <p>Or log in <a href="/login">here</a></p>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-
-
-
-        </nav>
-
-
-        <div class="d-flex justify-content-center">
-            <img class="logoPic" src="LogoMakr_1eRLCk.png">
-
-
-        </div>
-
-    </div>
+    <title>tutorMe</title>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -105,6 +18,222 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script language="javascript" type="text/javascript">
+        // on click to change login page to signup page
+        const loginHere = () => {
+            $(".option-signup").fadeOut(100, () => {
+
+                $(".option-login").fadeIn(100);
+            });
+        };
+
+        // on click to change signup page to login page
+        const signupHere = () => {
+            $(".option-login").fadeOut(100, () => {
+
+                $(".option-signup").fadeIn(100);
+            });
+        };
+
+        const afterReady = ($) => {
+
+            // on click for login modal button
+            $(".login-modal-btn").on("click", event => {
+                $(".option-signup").hide();
+                $(".option-login").show();
+            });
+
+            // on click for signup modal button
+            $(".signup-modal-btn").on("click", event => {
+                $(".option-login").hide();
+                $(".option-signup").show();
+            });
+        }
+
+        $(document).ready(afterReady);
+    </script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <h2>tutorMe</h2>
+            </div>
+
+            <nav>
+                <button type="button" class="btn btn-primary login-modal-btn" data-toggle="modal"
+                    data-target=".bd-example-modal-lg-1">Log
+                    in</button>
+
+                <button type="button" class="btn btn-primary signup-modal-btn" data-toggle="modal"
+                    data-target=".bd-example-modal-lg-1">Sign
+                    up</button>
+            </nav>
+
+        </div>
+    </nav>
+
+    <!-- Login/Signup Modal -->
+    <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Signup Modal Content -->
+                <div class="option-signup">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sign Up</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="signup" id="s">
+                            <!--  NEED to integrate this with an api-route that creates either a student or teacher using the created user id -->
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Instructor</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Student</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="email-input1" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="password-input1" placeholder="Password">
+                            </div>
+                            <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span> <span class="msg"></span>
+                            </div>
+
+                        </form>
+                        <br />
+                        <p>Or log in <a href=javascript:loginHere()>here</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-default" form="s">Sign Up</button>
+                    </div>
+                </div>
+
+                <!-- Login Modal Content -->
+                <div class="option-login">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="login" id="i">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="email-input" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="password-input" placeholder="Password">
+                            </div>
+                        </form>
+                        <br />
+                        <p>Or sign up <a href=javascript:signupHere()>here</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" form="i" class="btn btn-default">Login</button>
+                    </div>
+                </div>
+
+
+                <!-- <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h2>Sign Up Form</h2>
+                        <form class="signup">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="email-input" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="password-input" placeholder="Password">
+                            </div>
+                            <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span> <span class="msg"></span>
+                            </div>
+                            <button type="submit" class="btn btn-default">Sign Up</button>
+                        </form>
+                        <br />
+                        <p>Or log in <a href="/login">here</a></p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h2>Login Form</h2>
+                        <form class="login">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="email-input" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="password-input" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-default">Login</button>
+                        </form>
+                        <br />
+                        <p>Or sign up <a href="/">here</a></p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div> -->
+
+
+
+
+    <div class="container">
+
+        <div class="d-flex justify-content-center">
+            <img class="logoPic" src="LogoMakr_1eRLCk.png">
+
+
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/signup.js"></script>
 
 </body>
 

@@ -1,4 +1,8 @@
-form.signup,
+/* form.signup,
 form.login {
   margin-top: 50px;
+} */
+
+.option-signup, .option-login {
+  display: none;
 }
