@@ -17,8 +17,8 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    // True if they are a teacher, false if they are student
-    teacher: {
+    // True if they are a instructor, false if they are student
+    instructor: {
       type: DataTypes.BOOLEAN,
       allowNull: true
     }
