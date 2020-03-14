@@ -14,11 +14,18 @@ module.exports = function (sequelize, DataTypes) {
 
             }
         },
-        start_time: {
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+
+            }
+        },
+        date: {
             type: DataTypes.DATE,
             allowNull: false
         },
-        end_time: {
+        time: {
             type: DataTypes.DATE,
             allowNull: false
         },
