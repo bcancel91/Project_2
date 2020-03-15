@@ -28,8 +28,12 @@ $(document).ready(function () {
       email: email,
       password: password
     })
-      .then(function () {
-        window.location.replace("/instructors");
+      .then(data => {
+        if (data.instructor === "true") {
+          window.location.replace("/instructors");
+        } else {
+          window.location.replace("/students");
+        }
         // If there's an error, log the error
       })
       .catch(err => {
