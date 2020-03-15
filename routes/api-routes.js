@@ -10,7 +10,8 @@ module.exports = function (app) {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
-      id: req.user.id
+      id: req.user.id,
+      instructor: req.user.instructor
     });
   });
 
@@ -18,7 +19,7 @@ module.exports = function (app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
-    console.log(typeof req.body.instructor, req.body.instructor);
+    // console.log(typeof req.body.instructor, req.body.instructor);
 
     if (req.body.instructor === "true") {
       // if instructor create instructor
@@ -60,20 +61,6 @@ module.exports = function (app) {
           res.status(401).json(err);
         });
     }
-  });
-
-  // route for adding instructor row on signup
-  app.post("/api/addInstructor/:userid", (req, res) => {
-    let userid = req.params.userid;
-
-    db.User.findOne({
-      where: {
-        id: userid
-      }
-    })
-      .then((res) => {
-        console.log(res);
-      });
   });
 
   // Route for logging user out

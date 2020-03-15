@@ -28,7 +28,8 @@ $(document).ready(function () {
     signUpUser(userData.email, userData.password, userData.instructor);
     emailInput.val("");
     passwordInput.val("");
-    radioChoice.val("");
+    $('input[name=studOrInst]:checked',
+      '#s').val("");
   });
 
   // Does a post to the signup route. If successful, we are redirected to the instructors page
@@ -41,8 +42,12 @@ $(document).ready(function () {
     })
       .then(data => {
         console.log(data);
-        // $.post(`/api/addInstructor/${data.id}`);
-        window.location.replace("/instructors");
+
+        if (data.instructor) {
+          window.location.replace("/instructors");
+        } else {
+          window.location.replace("/students");
+        }
 
         // If there's an error, handle it by throwing up a bootstrap alert
       })
