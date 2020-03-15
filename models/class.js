@@ -7,13 +7,6 @@ module.exports = function (sequelize, DataTypes) {
 
             }
         },
-        date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            validate: {
-
-            }
-        },
         description: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -23,7 +16,10 @@ module.exports = function (sequelize, DataTypes) {
         },
         date: {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: false,
+            validate: {
+
+            }
         },
         time: {
             type: DataTypes.DATE,
@@ -43,9 +39,13 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         });
-
-        Class.hasMany(models.Student)
+        Class.belongsToMany(models.Student, {
+            through: "studentClass",
+            as: "class",
+            foreignKey: 'studentId',
+            otherKey: 'classId'
+        });
+        // Class.hasMany(models.Student)
     };
-
     return Class;
 };
