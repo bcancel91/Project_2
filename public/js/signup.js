@@ -41,7 +41,7 @@ $(document).ready(function () {
     })
       .then(data => {
         console.log(data);
-        // $.post(`/api/addTeacher/${data.id}`);
+        // $.post(`/api/addInstructor/${data.id}`);
         window.location.replace("/members");
 
         // If there's an error, handle it by throwing up a bootstrap alert

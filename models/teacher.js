@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    const Teacher = sequelize.define("Teacher", {
+    const Instructor = sequelize.define("Instructor", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -16,13 +16,13 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    Teacher.associate = function (models) {
+    Instructor.associate = function (models) {
 
-        Teacher.hasMany(models.Class, {
+        Instructor.hasMany(models.Class, {
             onDelete: "cascade"
         });
-        Teacher.belongsTo(models.User);
+        Instructor.belongsTo(models.User);
     };
-    return Teacher;
+    return Instructor;
 };
 

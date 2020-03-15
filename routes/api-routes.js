@@ -22,13 +22,13 @@ module.exports = function (app) {
 
     if (req.body.instructor === "true") {
       // if instructor create instructor
-      db.Teacher.create({
+      db.Instructor.create({
         email: req.body.email,
         name: req.body.password,
         User: {
           email: req.body.email,
           password: req.body.password,
-          teacher: req.body.instructor
+          instructor: req.body.instructor
         }
       }, {
         include: [db.User]
@@ -48,7 +48,7 @@ module.exports = function (app) {
         User: {
           email: req.body.email,
           password: req.body.password,
-          teacher: req.body.instructor
+          instructor: req.body.instructor
         }
       }, {
         include: [db.User]
@@ -62,8 +62,8 @@ module.exports = function (app) {
     }
   });
 
-  // route for adding teacher row on signup
-  app.post("/api/addTeacher/:userid", (req, res) => {
+  // route for adding instructor row on signup
+  app.post("/api/addInstructor/:userid", (req, res) => {
     let userid = req.params.userid;
 
     db.User.findOne({
