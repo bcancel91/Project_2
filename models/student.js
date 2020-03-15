@@ -17,11 +17,11 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Student.associate = function (models) {
-        Student.belongsToMany(models.Class,
-             { through: "studentClass",
-             as: "students",
-             foreignKey: 'studentId',
-             otherKey: 'classId' });
+        // Student.belongsToMany(models.Class,
+        //      { through: "UserClass",
+        //      as: "students",
+        //      foreignKey: "studentId",
+        //      });
         Student.belongsTo(models.User);
     };
     return Student;
