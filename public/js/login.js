@@ -29,7 +29,9 @@ $(document).ready(function () {
       password: password
     })
       .then(data => {
-        if (data.instructor === "true") {
+        console.log(typeof data.instructor, data.instructor);
+
+        if (data.instructor) {
           window.location.replace("/instructors");
         } else {
           window.location.replace("/students");
