@@ -8,8 +8,10 @@
   <!-- Bootstrap and css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link href="stylesheets/style.css" rel="stylesheet">
+  <link href="stylesheets/instructor.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/85b973685b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
   <!--  jQuery -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -22,48 +24,250 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <!-- Time and Date-Picker Plugin -->
-  <!-- <link rel="stylesheet" type="text/css" href="jquery.datetimepicker.css"/> -->
-  <!-- <script src="jquery.datetimepicker.js"></script> -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 </head>
 
-<script language="javascript" type="text/javascript">
-
-  $(document).ready(function () {
-    const afterReady = ($) => {
-      // on click for adding new class modal button
-      $(".login-modal-btn").on("click", event => {
-        $(".option-add").show();
-      });
-    };
-    // $('#datepicker').datetimepicker({
-    //   inline:true,
-    // });
-
-  });
-</script>
-
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/logout">
-          Logout
-        </a>
-        <button type="button" class="btn btn-secondary login-modal-btn" data-toggle="modal"
-          data-target=".bd-example-modal-lg-1">New class</button>
+
+  <div class="wrapper">
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+      <div id="dismiss">
+        <i class="fas fa-arrow-left"></i>
       </div>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="instructor-name"></span></h2>
+
+      <div class="sidebar-header">
+        <h2>tutorMe</h2>
       </div>
+
+      <ul class="list-unstyled components">
+        <h4 class="filter-header">Filter Options:</h4>
+        <li>
+          <a href="#classesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Classes:</a>
+          <ul class="collapse list-unstyled" id="classesSubmenu">
+            <li>
+              <a href="#">My Classes</a>
+            </li>
+            <li>
+              <a href="#">All Classes</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#durationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Duration:</a>
+          <ul class="collapse list-unstyled" id="durationSubmenu">
+            <li>
+              <a href="#">Less than 30 min</a>
+            </li>
+            <li>
+              <a href="#">Less than 60 min</a>
+            </li>
+            <li>
+              <a href="#">Over 60 min </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#priceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Price:</a>
+          <ul class="collapse list-unstyled" id="priceSubmenu">
+            <li>
+              <a href="#">FREE</a>
+            </li>
+            <li>
+              <a href="#">Less than $25</a>
+            </li>
+            <li>
+              <a href="#">Less than $50</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#instructorsSubmenu" data-toggle="collapse" aria-expanded="false"
+            class="dropdown-toggle">Instructors:</a>
+          <ul class="collapse list-unstyled" id="instructorsSubmenu">
+            <li>
+              <a href="#">James</a>
+            </li>
+            <li>
+              <a href="#">Peter</a>
+            </li>
+            <li>
+              <a href="#">Jack</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled CTAs">
+        <li>
+          <a href="" class="settings">Apply Settings</a>
+        </li>
+        <li>
+          <a href="" class="clear">Clear Settings</a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container-fluid" id="content">
+      <!-- We'll fill this with dummy content -->
+      <nav class="navbar navbar-light bg-light navbar-top">
+        <div class="container-fluid">
+
+          <div class="navbar-header">
+            <h2>tutorMe</h2>
+          </div>
+
+          <nav>
+            <a class="navbar-brand" href="/logout">
+              Logout
+            </a>
+          </nav>
+        </div>
+      </nav>
+
+
+
+      <div class="classes-view">
+
+        <div class="classes-header">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <h2><span class="instructor-name"></span>'s Classes</h2>
+
+              <nav>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                  <i class="fas fa-align-left"></i>
+                  <span>Filter Clases</span>
+                </button>
+
+                <button type="button" class="btn btn-secondary login-modal-btn" data-toggle="modal"
+                  data-target=".bd-example-modal-lg-1">New class</button>
+              </nav>
+
+            </div>
+          </nav>
+        </div>
+
+        <div class="container classes-view">
+          <div class="row">
+            <div class="col-2">
+              <h5>Topic</h5>
+            </div>
+            <div class="col-2">
+              <h5>Instructor</h5>
+            </div>
+            <div class="col-2">
+              <h5>Start Time</h5>
+            </div>
+            <div class="col-2">
+              <h5>Duration</h5>
+            </div>
+            <div class="col-2">
+              <h5>Price</h5>
+            </div>
+            <div class="col-2">
+              <h5>Capacity</h5>
+            </div>
+          </div>
+
+          <div class="row class">
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+          </div>
+
+          <div class="row class">
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+          </div>
+
+          <div class="row class">
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+          </div>
+
+          <div class="row class">
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+            <div class="col-2">
+              <p>Node</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
   </div>
+
+  <div class="overlay"></div>
 
 
   <!-- New class form -->
@@ -125,7 +329,28 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="js/class.js"></script>
+
+
+  <script>
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#dismiss, .overlay').on('click', function () {
+        $('#sidebar').removeClass('active');
+        $('.overlay').removeClass('active');
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').addClass('active');
+        $('.overlay').addClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+    });
+  </script>
+    <script type="text/javascript" src="js/class.js"></script>
   <script type="text/javascript" src="js/instructor.js"></script>
 </body>
 
