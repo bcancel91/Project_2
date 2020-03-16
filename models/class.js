@@ -22,14 +22,25 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         time: {
-            type: DataTypes.DATE,
-            allowNull: false
+            type: DataTypes.TIME,
+            allowNull: false,
+            validate: {
+
+            }
         },
         capacity: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+
+            }
         },
         price: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+
+            }
         }
     });
 

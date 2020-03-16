@@ -10,12 +10,6 @@ CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT current_timestam
 ALTER TABLE `gq`.`Students` 
 CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT current_timestamp ,
 CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT current_timestamp ;
--- ALTER TABLE `gq`.`Classes` 
--- CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT current_timestamp ,
--- CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT current_timestamp ;
--- ALTER TABLE `gq`.`UserClasses` 
--- CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT current_timestamp ,
--- CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT current_timestamp ;
 
 -- USERS INSERT
 INSERT INTO users (email, password, instructor) VALUES 
@@ -55,4 +49,16 @@ INSERT INTO students (email, name, UserId) VALUES
     ("test13@gmail.com", "test", 13),
     ("test14@gmail.com", "test", 14);
 
-INSERT INTO classes ()
+
+ALTER TABLE `gq`.`Classes` 
+CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT current_timestamp ,
+CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT current_timestamp ;
+
+INSERT INTO classes (topic, description, date, time, capacity, price, InstructorId) VALUES
+("Javascript Basics", "Learn all the basic functionlity in a 2 hour workshop", "2020-04-15", "4:30", 20, 20,1);
+select * from classes;
+
+-- ALTER TABLE `gq`.`UserClasses` 
+-- CHANGE COLUMN `createdAt` `createdAt` DATETIME NOT NULL DEFAULT current_timestamp ,
+-- CHANGE COLUMN `updatedAt` `updatedAt` DATETIME NOT NULL DEFAULT current_timestamp ;
+
