@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Getting references to our form and input
-    let classForm = $("form.add-class");
+    let classForm = $(".option-add");
     let topicInput = $("input#topic-input");
     let descriptInput = $("input#description-input");
     let dateInput = $("input#datepicker");
@@ -9,57 +9,45 @@ $(document).ready(function () {
     let priceInput = $("input#price-input");
   
     // When the signup button is clicked, we validate the email and password are not blank
-    signUpForm.on("submit", function (event) {
+    classForm.on("submit", function (event) {
       event.preventDefault();
   
-      let radioChoice = $('input[name=studOrInst]:checked',
-        '#s').val();
-  
-      let userData = {
-  
-        email: emailInput.val().trim(),
-        password: passwordInput.val().trim(),
-        instructor: !radioChoice ? null : radioChoice === "instructor"
-  
+      let classData = {
+        topic: topicInput.val().trim(),
+        description: descriptInput.val().trim(),
+        date: dateInput.val().trim(),
+        time: timeInput.val().trim(),
+        capacity: capacityInput.val().trim(),
+        price: priceInput.val().trim(),
       };
   
-      console.log("instructor: ", userData.instructor);
+      console.log("class: ", classData);
   
-      if (!userData.email || !userData.password || userData.instructor === null) {
+      if (!classData.topic || !classData.description || !classData.date
+        || !classData.time || !classData.capacity || !classData.price === null) {
         return;
       }
-      // If we have an email and password, run the signUpUser function
-      signUpUser(userData.email, userData.password, userData.instructor);
-      emailInput.val("");
-      passwordInput.val("");
-      $('input[name=studOrInst]:checked',
-        '#s').val("");
+      createClass(userData.topic, classData.description, classData.date, classData.time, classData.capacity, classData.price);
+    //   topicInput.val("");
+    //   descriptInput.val("");
+    //   $('input[name=studOrInst]:checked',
+    //     '#s').val("");
     });
 
-    // Does a post to the signup route. If successful, we are redirected to the instructors page
-  // Otherwise we log any errors
-  function signUpUser(email, password, instructor) {
-    $.post("/api/signup", {
-      email: email,
-      password: password,
-      instructor: instructor
+  function createClass(topic, description, date, time, capacity, price) {
+    $.post("/classes", {
+      topic: topic,
+      description: description,
+      date: date,
+      time: time,
+      capacity: capacity,
+      price: price
     })
       .then(data => {
         console.log(data);
-
-        if (data.instructor) {
-          window.location.replace("/instructors");
-        } else {
-          window.location.replace("/students");
-        }
-
         // If there's an error, handle it by throwing up a bootstrap alert
       })
-      .catch(handleLoginErr);
+      .catch(error);
   }
 
-  function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
-  }
 });
