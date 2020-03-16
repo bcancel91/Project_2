@@ -25,7 +25,7 @@ module.exports = function (app) {
       // if instructor create instructor
       db.Instructor.create({
         email: req.body.email,
-        name: req.body.password,
+        name: req.body.name,
         User: {
           email: req.body.email,
           password: req.body.password,
@@ -45,7 +45,7 @@ module.exports = function (app) {
     } else {
       db.Student.create({
         email: req.body.email,
-        name: req.body.password,
+        name: req.body.name,
         User: {
           email: req.body.email,
           password: req.body.password,
@@ -77,10 +77,29 @@ module.exports = function (app) {
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        email: req.user.email,
-        id: req.user.id
-      });
+      let Model;
+      if (req.user.instructor) {
+        Model = db.Instructor;
+      } else {
+        Model = db.Student;
+      }
+      // if (req.user.instructor) {
+      Model.findOne({
+        where: {
+          UserId: req.user.id
+        }
+      })
+        .then(data => {
+          // console.log(data);
+          let name = data.dataValues.name;
+          res.json({
+            name: (name).substr(0, name.indexOf(",")),
+            email: req.user.email,
+            id: req.user.id
+          });
+
+        });
     }
+
   });
 };

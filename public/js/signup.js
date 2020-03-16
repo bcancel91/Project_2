@@ -1,6 +1,8 @@
 $(document).ready(function () {
   // Getting references to our form and input
   let signUpForm = $("form.signup");
+  let f_name = $("#first-name");
+  let l_name = $("#last-name");
   let emailInput = $("input#email-input1");
   let passwordInput = $("input#password-input1");
 
@@ -13,6 +15,7 @@ $(document).ready(function () {
 
     let userData = {
 
+      name: `${f_name.val().trim()},${l_name.val().trim()}`,
       email: emailInput.val().trim(),
       password: passwordInput.val().trim(),
       instructor: !radioChoice ? null : radioChoice === "instructor"
@@ -21,11 +24,14 @@ $(document).ready(function () {
 
     console.log("instructor: ", userData.instructor);
 
-    if (!userData.email || !userData.password || userData.instructor === null) {
+    if (!userData.email || !userData.password || userData.instructor === null || !f_name || !l_name) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password, userData.instructor);
+    signUpUser(userData.name, userData.email, userData.password, userData.instructor);
+
+    f_name.val("");
+    l_name.val("");
     emailInput.val("");
     passwordInput.val("");
     $('input[name=studOrInst]:checked',
@@ -34,8 +40,9 @@ $(document).ready(function () {
 
   // Does a post to the signup route. If successful, we are redirected to the instructors page
   // Otherwise we log any errors
-  function signUpUser(email, password, instructor) {
+  function signUpUser(name, email, password, instructor) {
     $.post("/api/signup", {
+      name: name,
       email: email,
       password: password,
       instructor: instructor
