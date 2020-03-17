@@ -14,15 +14,15 @@ module.exports = function (sequelize, DataTypes) {
 
             }
         },
-        date: {
+        datetime: {
             type: DataTypes.DATE,
             allowNull: false,
             validate: {
 
             }
         },
-        time: {
-            type: DataTypes.TIME,
+        duration: {
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
 
@@ -36,7 +36,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         price: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
 
