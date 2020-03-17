@@ -171,3 +171,18 @@ a.settings {
     top: 0;
     right: 0;
 }
+.navbar {
+    padding: .8rem;
+  }
+  .navbar-nav li {
+    padding-right: 20px;
+  
+  }
+  .nav-link{
+    font-size: 1.1em !important;
+  }
+footer{
+    background-color: rgb(90, 81, 81);
+    color: #d5d5d5;
+    padding-top: 2rem;
+  }
