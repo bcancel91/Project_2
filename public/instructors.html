@@ -288,37 +288,38 @@
 
               <div class="form-group">
                 <label for="topic">Topic</label>
-                <input type="input" required ="required" class="form-control" id="topic-input" placeholder="Javascript 101">
+                <input type="input" required="required" class="form-control" id="topic-input"
+                  placeholder="Javascript 101">
               </div>
               <div class="form-group">
                 <label for="description">Description</label>
-                <input type="text" required ="required" rows="10" class="form-control" id="description-input" placeholder="Notes about your offer">
+                <input type="text" required="required" rows="10" class="form-control" id="description-input"
+                  placeholder="Notes about your offer">
               </div>
-              <!-- Date input -->
-              <form method="post">
-                <div class="form-group">
-                  <label class="control-label" for="date">Date</label>
-                  <input class="form-control" required ="required" id="datepicker" name="date" placeholder="need to fix the dropdown here (YYYY-MM-DD)" type="text" />
-                </div>
-              </form>
-              <!-- Time input -->
-              <form method="post">
-                <div class="form-group">
-                  <label class="control-label" for="time">Time</label>
-                  <input class="form-control" required ="required" id="time" name="time" placeholder="2:30" type="text" />
-                </div>
-              </form>
+              <!-- Date and time input -->
+              <!-- <form method="post"> -->
               <div class="form-group">
-                <label for="capacity">Class capacity</label>
-                <input type="number" required ="required" class="form-control" id="capacity-input" placeholder="">
+                <label class="control-label" for="date">Date and Time</label>
+                <input type="datetime-local" class="form-control" required="required" id="datetime" name="date"
+                  placeholder="YYYY-MM-DD" value="2020-04-12T19:30" min="2020-03-17T00:00" max="2027-03-17T00:00" />
               </div>
-              <div class="form-group">
-                <label for="price">Price</label>
-                <input type="number" required ="required" class="form-control" id="price-input" placeholder="50 USD">
-              </div>
-              <br />
-              <!-- NEED TO ADD A JS FILE FOR ALL CLASSES HERE -->
-              <p>See all classes <a href="">here</a></p>
+            </form>
+            <!-- Duration input -->
+            <div class="form-group">
+              <label class="control-label" for="time">Class duration</label>
+              <input type="number" class="form-control" required="required" id="time"/>
+            </div>
+            </form>
+            <div class="form-group">
+              <label for="capacity">Class capacity</label>
+              <input type="number" required="required" class="form-control" id="capacity-input" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="price">Price: $</label>
+              <input type="number" required="required" class="form-control" id="price-input">
+            </div>
+            <br />
+            <p>See all classes <a href="/classes/all">here</a></p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -350,7 +351,7 @@
       });
     });
   </script>
-    <script type="text/javascript" src="js/class.js"></script>
+  <script type="text/javascript" src="js/class.js"></script>
   <script type="text/javascript" src="js/instructor.js"></script>
 </body>
 
