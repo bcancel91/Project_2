@@ -176,6 +176,12 @@ text-shadow: 1px 1px 10px #000;
     right: 0;
     opacity: 0; 
   }
+  #pic3, #pic2, #pic1 {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    
+  }
 
 
 
