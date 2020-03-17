@@ -19,6 +19,9 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
     <link rel="stylesheet" href="stylesheets/style.css">
 
 
@@ -53,6 +56,7 @@
                 $(".option-signup").show();
             });
         }
+    
 
         $(document).ready(afterReady);
     </script>
@@ -97,7 +101,7 @@
                         <div class="col-1"></div>
                         <div class="col-5 text-center">
                             <h1>Learn Anywhere with Zoom</h1>
-                            <a href="https://zoom.us/home?zcid=2478" src="_blank" class="bold-link">Click here to check out zoom</a>
+                            <a href="https://zoom.us/home?zcid=2478" src="_blank" class="bold-link"></a>
                             
                         </div>
                     </div>
@@ -105,8 +109,15 @@
             </div>
            <div class="container-fluid">
     <div class="row jumbtron mt-3">
+            
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-            <p class="lead">An online tutoring service that is available to you from anywhere. link with others who have already mastered what you are learning. everyone is good at something in their own way, here at tutorMe if you feel like you have a good grasp on a language or framework simply select from the listed provided and let others learn from you.</p>
+                
+                
+            <p class="lead"> <h1 class="ml4 text-center">
+                    <span class="letters letters-1">What in the world</span>
+                    <span class="letters letters-2">is tutorMe?</span>
+                    <span class="letters letters-3">Great question!</span>
+                  </h1>An online tutoring service that is available to you from anywhere. link with others who have already mastered what you are learning. everyone is good at something in their own way, here at tutorMe if you feel like you have a good grasp on a language or framework simply select from the listed provided and let others learn from you.</p>
             <p>Students are able to browse upcoming study sessions, send messages.</p>
             <p>Teachers are able to select material that they feel like they know and can teach others, make up sessions that students can join, set prices for what they are teahing. are able to browse upcoming study sessions, send messages.</p>
         </div>
@@ -267,7 +278,15 @@
         <!-- Profiles -->
 
 <div class="container-fluid padding">
-        <h2 class="text-center">Meet the Team</h2>
+      
+        <h1 class="ml11 text-center">
+                <span class="text-wrapper">
+                  <span class="line line1"></span>
+                  <span class="letters">MEET THE TEAM</span>
+                </span>
+              </h1>
+              
+
         <div class="row padding">
            
             <div class="col-md-4">
@@ -347,6 +366,93 @@
 
         <script type="text/javascript" src="js/login.js"></script>
         <script type="text/javascript" src="js/signup.js"></script>
+        <script>
+                // Wrap every letter in a span
+var textWrapper = document.querySelector('.ml11 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml11 .line',
+    scaleY: [0,1],
+    opacity: [0.5,1],
+    easing: "easeOutExpo",
+    duration: 700
+  })
+  .add({
+    targets: '.ml11 .line',
+    translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+    easing: "easeOutExpo",
+    duration: 700,
+    delay: 100
+  }).add({
+    targets: '.ml11 .letter',
+    opacity: [0,1],
+    easing: "easeOutExpo",
+    duration: 600,
+    offset: '-=775',
+    delay: (el, i) => 34 * (i+1)
+  }).add({
+    targets: '.ml11',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+
+
+  var ml4 = {};
+ml4.opacityIn = [0,1];
+ml4.scaleIn = [0.2, 1];
+ml4.scaleOut = 3;
+ml4.durationIn = 800;
+ml4.durationOut = 600;
+ml4.delay = 500;
+
+anime.timeline({loop: false})
+  .add({
+    targets: '.ml4 .letters-1',
+    opacity: ml4.opacityIn,
+    scale: ml4.scaleIn,
+    duration: ml4.durationIn
+  }).add({
+    targets: '.ml4 .letters-1',
+    opacity: 0,
+    scale: ml4.scaleOut,
+    duration: ml4.durationOut,
+    easing: "easeInExpo",
+    delay: ml4.delay
+  }).add({
+    targets: '.ml4 .letters-2',
+    opacity: ml4.opacityIn,
+    scale: ml4.scaleIn,
+    duration: ml4.durationIn
+  }).add({
+    targets: '.ml4 .letters-2',
+    opacity: 0,
+    scale: ml4.scaleOut,
+    duration: ml4.durationOut,
+    easing: "easeInExpo",
+    delay: ml4.delay
+  }).add({
+    targets: '.ml4 .letters-3',
+    opacity: ml4.opacityIn,
+    scale: ml4.scaleIn,
+    duration: ml4.durationIn
+  }).add({
+    targets: '.ml4 .letters-3',
+    opacity: 0,
+    scale: ml4.scaleOut,
+    duration: ml4.durationOut,
+    easing: "easeInExpo",
+    delay: ml4.delay
+  }).add({
+    targets: '.ml4',
+    opacity: 0,
+    duration: 500,
+    delay: 500
+  });
+        </script>
 
 </body>
 
