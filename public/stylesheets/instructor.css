@@ -173,6 +173,8 @@ a.settings {
 }
 .navbar {
     padding: .8rem;
+    margin-left: -20px;
+    margin-right: -20px;
   }
   .navbar-nav li {
     padding-right: 20px;
@@ -185,4 +187,8 @@ footer{
     background-color: rgb(90, 81, 81);
     color: #d5d5d5;
     padding-top: 2rem;
+    margin-top: 75px;
+    margin-left: -20px;
+    margin-right: -20px;
+    
   }
