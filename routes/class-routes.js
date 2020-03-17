@@ -6,7 +6,7 @@ const db = require("../models");
 module.exports = function (app) {
 
     // GET route for getting all of the classes
-    app.get("/classes", isInstructor, (req, res) => {
+    app.get("/classes/all", isInstructor, (req, res) => {
         let query = {};
         //We use new way to pass optional parameters here: req.query
         //example url: "/api/posts?author_id=1"
