@@ -1,9 +1,138 @@
-/* form.signup,
-form.login {
-  margin-top: 50px;
-} */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+
 
 .option-signup, .option-login {
   display: none;
 }
+
+
+.temp{
+  color:white;
+  background-color:blue;
+  padding:20px;
+border-radius: 25px;
+} 
+
+
+/*---Media Queries --*/
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+
+}
+@media (max-width: 576px) {
+
+}
+
+
+html, body{
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+  
+}
+.navbar {
+  padding: .8rem;
+}
+.navbar-nav li {
+  padding-right: 20px;
+
+}
+.nav-link{
+  font-size: 1.1em !important;
+}
+.parallax2 {
+  height: 40vw;
+  background-image: url('../images/aerial-architectural-design-architecture-buildings-373912.jpg');
+  background-position: 50% ;
+  background-repeat: no-repeat;
+  background-size:  cover;
+  background-attachment: fixed;
+  color: white;
+  display: flex;
+  align-items: center;
+
+}
+.parrallax2 h1 {
+  color: pink;
+  font-weight: bold;
+  padding-bottom: 5vh ;
+}
+
+.bold-link {
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+.img-fluid {
+  border: 5px solid;
+  border-radius: 10px;
+}
+ 
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
+.carousel-caption {
+ position: absolute;
+ top: 50%;
+ transform: translateY(-50%);
+}
+.carousel-caption h1 {
+font-size: 500%;
+text-transform: uppercase;
+text-shadow: 1px 1px 10px #000; 
+}
+.carousel-caption h3 {
+  font-size: 200%;
+  font-weight: 500;
+  text-shadow: 1px 1px 10px #000;
+  padding-bottom: 1rem;
+  } 
+  .btn-primary {
+    background-color: rgb(25, 78, 25);
+    border: 1px solid rgb(25, 78, 25);
+  }
+  .btn-primary:hover {
+    background-color:rgb(9, 63, 9);
+    border: 1px solid (9, 63, 9);
+  } 
+  .jumbotron {
+    padding: 1rem;
+    border-radius: 0;
+  }
+  .padding {
+    padding-bottom: 2rem;
+  }
+  .welcome {
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 2rem;
+  }
+  .welcome hr {
+    border-top: 2px solid #b4b4b4;
+    width: 95%;
+    margin-top: .3rem;
+    margin-bottom: 1rem;
+  }
+  footer{
+    background-color: rgb(90, 81, 81);
+    color: #d5d5d5;
+    padding-top: 2rem;
+  }
+  hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
+    margin-top: .8rem;
+  }
+
+
+
+
+
+
+
 
