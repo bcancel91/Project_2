@@ -8,8 +8,7 @@ module.exports = function (app) {
     // GET route for getting all of the classes
     app.get("/classes/all", isInstructor, (req, res) => {
         let query = {};
-        //We use new way to pass optional parameters here: req.query
-        //example url: "/api/posts?author_id=1"
+        //We pass optional parameters here: req.query
         if (req.query.instructor_id) {
             query = {
                 InstructorId: req.query.instructor_id
@@ -19,12 +18,17 @@ module.exports = function (app) {
             where: query,
             // include: [db.Instructor]
         }).then(function (dbClass) {
-            res.json(dbClass);
+            // res.json(dbClass);
+            let hbsObject = {
+                classes: dbClass
+            };
+            console.log(hbsObject);
+            res.render("index", hbsObject);
         });
     });
 
     // POST route for saving a new class
-    app.post("/classes", isInstructor, (req, res) => {
+    app.post("/classes/add", isInstructor, (req, res) => {
 
         console.log(req.user)
 
