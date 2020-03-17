@@ -35,7 +35,7 @@ $(document).ready(function () {
   });
 
   function createClass(topic, description, datetime, duration, capacity, price) {
-    $.post("/classes", {
+    $.post("/classes/add", {
         topic: topic,
         description: description,
         datetime: datetime,
@@ -43,10 +43,10 @@ $(document).ready(function () {
         capacity: capacity,
         price: price
       })
-      .then(data => {
-        console.log(data);
+      .then(addedClass => {
+        res.redirect ("/classes/all")
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(error => console.log(error));
-  }
+  };
 });
