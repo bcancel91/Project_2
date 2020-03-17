@@ -23,15 +23,13 @@ module.exports = function (app) {
                 classes: dbClass
             };
             console.log(hbsObject);
-            res.render("index", hbsObject);
+            res.render("class", hbsObject);
         });
     });
 
     // POST route for saving a new class
     app.post("/classes/add", isInstructor, (req, res) => {
-
         console.log(req.user)
-
         db.Instructor.findOne({
             where: {
                 UserId: req.user.id

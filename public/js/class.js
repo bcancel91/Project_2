@@ -44,7 +44,7 @@ $(document).ready(function () {
         price: price
       })
       .then(addedClass => {
-        res.redirect ("/classes/all")
+        res.render ("/classes/all")
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(error => console.log(error));
