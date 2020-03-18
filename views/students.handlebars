@@ -134,111 +134,38 @@
             </div>
 
             <div class="container classes-view">
-                <div class="row">
-                    <div class="col-2">
-                        <h5>Topic</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5>Instructor</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5>Start Time</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5>Duration</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5>Price</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5>Capacity</h5>
+
+                {{#each classes}}
+
+                <div class="card">
+                    <h5 class="card-header">{{topic}}</h5>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <p class="card-text">What you'll learn: {{description}}</p>
+                            <br>
+                            {{!-- the line below will be visible only for getting all classes from all instructors --}}
+                            {{!-- maybe link instructor name to instructor's profile page --}}
+                            <li class="list-group-item">
+                                <h5 class="card-title">Instructor: {{InstructorId}}</h5>
+                            </li>
+                            <li class="list-group-item">Date and Time: {{datetime}}</li>
+                            <li class="list-group-item">Class Duration: {{duration}}</li>
+                            <li class="list-group-item">Class Capacity: {{capacity}} persons</li>
+                            <li class="list-group-item">Price: {{price}}</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary view-class" data-toggle="modal"
+                            data-target="#classDetails" data-class-id={{id}}>
+                            View Class
+                        </button>
+
+                        {{!-- add a modal here to doublecheck user's click on delete button --}}
                     </div>
                 </div>
 
-                <div class="row class">
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                </div>
-
-                <div class="row class">
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                </div>
-
-                <div class="row class">
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                </div>
-
-                <div class="row class">
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                </div>
-
+                {{else}}
+                <p>No classes available at the moment.</p>
+                {{!-- <a href="#" class="btn btn-primary">New class</a> --}}
+                {{/each}}
             </div>
 
         </div>
@@ -289,72 +216,61 @@
 
 <div class="overlay"></div>
 
+<!-- footer -->
 
-<!-- New class form -->
+{{!-- View Class Details Modal --}}
+
 <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
+    aria-hidden="true" id="classDetails">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
+            <!-- Login Modal Content -->
 
-            <div class="option-add">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add a new class</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="add-class" id="c">
+            <div class="modal-header">
+                <h5 class="modal-title">Class Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="view-x-btn">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="all-class-details">
+                    {{#each classes}}
+                    <div class="card class-detail" id="class-{{id}}">
+                        <h5 class="card-header">{{topic}}</h5>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <p class="card-text">What you'll learn: {{description}}</p>
+                                <br>
+                                {{!-- the line below will be visible only for getting all classes from all instructors --}}
+                                {{!-- maybe link instructor name to instructor's profile page --}}
+                                <li class="list-group-item">
+                                    <h5 class="card-title">Instructor: {{InstructorId}}</h5>
+                                </li>
+                                <li class="list-group-item">Date and Time: {{datetime}}</li>
+                                <li class="list-group-item">Class Duration: {{duration}}</li>
+                                <li class="list-group-item">Class Capacity: {{capacity}} persons</li>
+                                <li class="list-group-item">Price: {{price}}</li>
+                            </ul>
 
-                        <div class="form-group">
-                            <label for="topic">Topic</label>
-                            <input type="input" required="required" class="form-control" id="topic-input"
-                                placeholder="Javascript 101">
                         </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" required="required" rows="10" class="form-control" id="description-input"
-                                placeholder="Notes about your offer">
-                        </div>
-                        <!-- Date and time input -->
-                        <!-- <form method="post"> -->
-                        <div class="form-group">
-                            <label class="control-label" for="date">Date and Time</label>
-                            <input type="datetime-local" class="form-control" required="required" id="datetime"
-                                name="date" placeholder="YYYY-MM-DD" value="2020-04-12T19:30" min="2020-03-17T00:00"
-                                max="2027-03-17T00:00" />
-                        </div>
-                    </form>
-                    <!-- Duration input -->
-                    <div class="form-group">
-                        <label class="control-label" for="time">Class duration(hours)</label>
-                        <input type="number" class="form-control" required="required" id="time" />
                     </div>
-                    </form>
-                    <div class="form-group">
-                        <label for="capacity">Class capacity</label>
-                        <input type="number" required="required" class="form-control" id="capacity-input"
-                            placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Price: $</label>
-                        <input type="number" required="required" class="form-control" id="price-input">
-                    </div>
-                    <br />
-                    <p>See all classes <a href="/classes/all">here</a></p>
+                    {{/each}}
                 </div>
+
+                {{!-- add a modal here to doublecheck user's click on delete button --}}
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" form="c" class="btn btn-default">Add</button>
+                    <a href="#" class="btn btn-secondary">Add this class</a>
+                    <a href="#" class="btn btn-danger">Email instructor</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="details-close-btn">Close</button>
+                    {{!-- <button type="submit" form="l" class="btn btn-default">Login</button> --}}
                 </div>
+
             </div>
 
         </div>
     </div>
 </div>
-<!-- footer -->
-
-
 
 <script>
     $(document).ready(function () {
@@ -372,6 +288,20 @@
             $('.overlay').addClass('active');
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+
+        $(".view-class").on("click", function () {
+            let classid = $(this).data("class-id");
+            console.log(`#class-${classid}`);
+            $(`#class-${classid}`).show();
+
+            $("#details-close-btn").on("click", function () {
+                $(`#class-${classid}`).hide();
+            });
+
+            $("#view-x-btn").on("click", function () {
+                $(`#class-${classid}`).hide();
+            });
         });
     });
 </script>
