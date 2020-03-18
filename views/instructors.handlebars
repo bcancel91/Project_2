@@ -147,12 +147,32 @@
 
 
             {{!-- Here we will out handlebars for loading the class data --}}
-
             {{!-- to do that, we need a function that finds all classes, in order of soonest to latest, and puts the results in a HBS object --}}
+           
             <div class="container classes-view">
 
+                {{#each classes}}
+
+                <div class="card">
+                    <h5 class="card-header">{{topic}}</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">{{instructor}}</h5>
+                        <p class="card-text">{{description}}</p>
+                        <p>Price: {{price}}</p>
+                        <a href="#" class="btn btn-primary">View Class</a>
+                        {{!-- add buttons for editing and deleting --}}
+                    </div>
+                </div>
+
+                {{!-- {{else}} --}}
+                {{!-- <p>No classes available at the moment</p> --}}
+                {{/each}}
+    
+            </div>
+
+
                 {{!-- each row was meant to be a class --}}
-                <div class="row">
+                {{!-- <div class="row">
                     <div class="col-2">
                         <h5>Topic</h5>
                     </div>
@@ -160,7 +180,7 @@
                         <h5>Instructor</h5>
                     </div>
                     <div class="col-2">
-                        <h5>Start Time</h5>
+                        <h5>Time</h5>
                     </div>
                     <div class="col-2">
                         <h5>Duration</h5>
@@ -255,9 +275,7 @@
                     <div class="col-2">
                         <p>Node</p>
                     </div>
-                </div>
-
-            </div>
+                </div> --}}
 
         </div>
 
