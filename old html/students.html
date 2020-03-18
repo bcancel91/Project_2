@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Passport Authentication</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap and css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="stylesheets/instructor.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/85b973685b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!--  jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div id="dismiss">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+
+            <div class="sidebar-header">
+                <h2>tutorMe</h2>
+            </div>
+
+            <ul class="list-unstyled components">
+                <h4 class="filter-header">Filter Options:</h4>
+                <li>
+                    <a href="#classesSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Classes:</a>
+                    <ul class="collapse list-unstyled" id="classesSubmenu">
+                        <li>
+                            <a href="#">My Classes</a>
+                        </li>
+                        <li>
+                            <a href="#">All Classes</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#durationSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Duration:</a>
+                    <ul class="collapse list-unstyled" id="durationSubmenu">
+                        <li>
+                            <a href="#">Less than 30 min</a>
+                        </li>
+                        <li>
+                            <a href="#">Less than 60 min</a>
+                        </li>
+                        <li>
+                            <a href="#">Over 60 min </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#priceSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Price:</a>
+                    <ul class="collapse list-unstyled" id="priceSubmenu">
+                        <li>
+                            <a href="#">FREE</a>
+                        </li>
+                        <li>
+                            <a href="#">Less than $25</a>
+                        </li>
+                        <li>
+                            <a href="#">Less than $50</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#instructorsSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Instructors:</a>
+                    <ul class="collapse list-unstyled" id="instructorsSubmenu">
+                        <li>
+                            <a href="#">James</a>
+                        </li>
+                        <li>
+                            <a href="#">Peter</a>
+                        </li>
+                        <li>
+                            <a href="#">Jack</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="" class="settings">Apply Settings</a>
+                </li>
+                <li>
+                    <a href="" class="clear">Clear Settings</a>
+                </li>
+            </ul>
+
+        </nav>
+
+
+        <div class="container-fluid" id="content">
+
+            <nav class="navbar navbar-expand-md navbar-light bg-light ">
+                <div class="container-fluid">
+
+                    <a class="navbar-brand" href="#"><img src="">
+                        <h2>tutorMe</h2>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="#">Logout</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </nav>
+
+            <div class="classes-view">
+
+                <div class="classes-header">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
+                            <h2><span class="instructor-name"></span>'s Classes</h2>
+
+                            <nav>
+                                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                                    <i class="fas fa-align-left"></i>
+                                    <span>Filter Clases</span>
+                                </button>
+                            </nav>
+
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="container classes-view">
+                    <div class="row">
+                        <div class="col-2">
+                            <h5>Topic</h5>
+                        </div>
+                        <div class="col-2">
+                            <h5>Instructor</h5>
+                        </div>
+                        <div class="col-2">
+                            <h5>Start Time</h5>
+                        </div>
+                        <div class="col-2">
+                            <h5>Duration</h5>
+                        </div>
+                        <div class="col-2">
+                            <h5>Price</h5>
+                        </div>
+                        <div class="col-2">
+                            <h5>Capacity</h5>
+                        </div>
+                    </div>
+
+                    <div class="row class">
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                    </div>
+
+                    <div class="row class">
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                    </div>
+
+                    <div class="row class">
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                    </div>
+
+                    <div class="row class">
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                        <div class="col-2">
+                            <p>Node</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <footer>
+                <div class="container-fluid padding">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <h4>Resources</h4>
+                            <hr class="light">
+                            <a href="https://www.github.com/" target="_blank"><i class="fab fa-github fa-3x"></i></a>
+                            <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube fa-3x"></i></a>
+                            <a href="https://stackoverflow.com" target="_blank"><i
+                                    class="fab fa-stack-overflow fa-3x"></i></a>
+                            <a href="https://getbootstrap.com" target="_blank"><i
+                                    class="fab fa-bootstrap fa-3x"></i></a>
+                            <a href="https://www.google.com/" target="_blank"><i class="fab fa-google fa-3x"></i></a>
+                            <!-- neet to rplace with w3schools or delete 
+                                        <i class="fab fa-github fa-3x"></i> -->
+
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Location</h4>
+                            <hr class="light">
+                            <p>Full-stack Flex Bootcamp</p>
+                            <p>Georgia, Tech</p>
+                            <p>Atlanta, GA</p>
+                            <p>30308</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Support</h4>
+                            <hr class="light">
+                            <p>tutorme.supoort@goodquestion.org</p>
+                        </div>
+                        <div class="col-12">
+                            <hr class="light">
+                            <h4>&copy; tutorme.com</h4>
+                        </div>
+                    </div>
+
+                </div>
+            </footer>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="overlay"></div>
+
+
+    <!-- New class form -->
+    <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="option-add">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a new class</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="add-class" id="c">
+
+                            <div class="form-group">
+                                <label for="topic">Topic</label>
+                                <input type="input" required="required" class="form-control" id="topic-input"
+                                    placeholder="Javascript 101">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" required="required" rows="10" class="form-control"
+                                    id="description-input" placeholder="Notes about your offer">
+                            </div>
+                            <!-- Date and time input -->
+                            <!-- <form method="post"> -->
+                            <div class="form-group">
+                                <label class="control-label" for="date">Date and Time</label>
+                                <input type="datetime-local" class="form-control" required="required" id="datetime"
+                                    name="date" placeholder="YYYY-MM-DD" value="2020-04-12T19:30" min="2020-03-17T00:00"
+                                    max="2027-03-17T00:00" />
+                            </div>
+                        </form>
+                        <!-- Duration input -->
+                        <div class="form-group">
+                            <label class="control-label" for="time">Class duration(hours)</label>
+                            <input type="number" class="form-control" required="required" id="time" />
+                        </div>
+                        </form>
+                        <div class="form-group">
+                            <label for="capacity">Class capacity</label>
+                            <input type="number" required="required" class="form-control" id="capacity-input"
+                                placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price: $</label>
+                            <input type="number" required="required" class="form-control" id="price-input">
+                        </div>
+                        <br />
+                        <p>See all classes <a href="/classes/all">here</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" form="c" class="btn btn-default">Add</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+    <script type="text/javascript" src="js/class.js"></script>
+    <script type="text/javascript" src="js/instructor.js"></script>
+</body>
+
+</html>
