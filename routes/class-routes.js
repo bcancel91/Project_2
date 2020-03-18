@@ -6,10 +6,10 @@ const db = require("../models");
 module.exports = function (app) {
 
     // GET route for getting all of the classes
-    
 
-    // POST route for saving a new class
-    app.post("/instructors", isInstructor, (req, res) => {
+
+    // POST route for adding a new class
+    app.post("/api/instructors/add", isInstructor, (req, res) => {
         console.log(req.user)
         db.Instructor.findOne({
             where: {
@@ -32,5 +32,19 @@ module.exports = function (app) {
             });
         })
 
+    });
+
+    app.post("/api/instructors/update", isInstructor, (req, res) => {
+        console.log(req.body);
+        let classid = req.body.id;
+        delete req.body.id;
+
+        db.Class.update(req.body, {
+            where: {
+                id: classid
+            }
+        }).then(result => {
+            res.sendStatus(200);
+        });
     });
 }
