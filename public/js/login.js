@@ -29,7 +29,7 @@ $(document).ready(function () {
       password: password
     })
       .then(data => {
-        console.log(typeof data.instructor, data.instructor);
+        // console.log(typeof data.instructor, data.instructor);
 
         if (data.instructor) {
           window.location.replace("/instructors");
