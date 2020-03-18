@@ -8,8 +8,9 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
+            len: [1],
             validate: {
 
             }
@@ -22,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         duration: {
-            type: DataTypes.TIME,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
 

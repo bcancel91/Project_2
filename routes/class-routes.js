@@ -19,7 +19,7 @@ module.exports = function (app) {
             const newClass = req.body;
             newClass.InstructorId = dbInstructor.id
             // console.log(dbInstructor)
-            // console.log(newClass)
+            console.log(newClass)
             db.Class.create(newClass).then(function () {
                 // find all classes created by the logged-in instructor
                 db.Class.findAll({})

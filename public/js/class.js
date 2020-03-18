@@ -28,7 +28,7 @@ $(document).ready(function () {
       return;
     }
     createClass(classData.topic, classData.description, classData.datetime, classData.duration, classData.capacity, classData.price);
-    window.location.reload();
+   
   });
 
   function createClass(topic, description, datetime, duration, capacity, price) {
@@ -38,10 +38,15 @@ $(document).ready(function () {
         datetime: datetime,
         duration: duration,
         capacity: capacity,
-        price: price
+        price: price,
       })
-      .then(addedClass => {
-        res.render("instructors")
+      .then(data => {
+        // console.log(data)
+         //none of tese options actually reloads the page to show the last added class :(
+        window.location.href = "/instructors"
+        // res.render("instructors")
+        // window.location.reload();
+        // window.location.replace("/instructors");
       })
       .catch(error => console.log(error));
   };
