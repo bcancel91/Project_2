@@ -32,10 +32,11 @@ $(document).ready(function () {
     //   descriptInput.val("");
     //   $('input[name=studOrInst]:checked',
     //     '#s').val("");
+    window.location.reload();
   });
 
   function createClass(topic, description, datetime, duration, capacity, price) {
-    $.post("/classes/add", {
+    $.post("/instructors/classes", {
         topic: topic,
         description: description,
         datetime: datetime,
@@ -44,7 +45,7 @@ $(document).ready(function () {
         price: price
       })
       .then(addedClass => {
-        res.render ("/classes/all")
+        res.render ("/instructors")
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(error => console.log(error));

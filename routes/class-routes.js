@@ -28,7 +28,7 @@ module.exports = function (app) {
     });
 
     // POST route for saving a new class
-    app.post("/classes/add", isInstructor, (req, res) => {
+    app.post("/instructors/classes", isInstructor, (req, res) => {
         console.log(req.user)
         db.Instructor.findOne({
             where: {
@@ -42,7 +42,14 @@ module.exports = function (app) {
             console.log(newClass)
 
             db.Class.create(newClass).then(function (dbClass) {
-                res.json(dbClass);
+                // res.json(dbClass);
+                db.Class.findAll({})
+                    .then(allClasses => {
+                        let hbsObject = {
+                            classes: allClasses
+                        };
+                        res.render("instructors", hbsObject)
+                    })
             });
         })
 
