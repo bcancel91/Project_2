@@ -195,3 +195,7 @@ footer{
   .class-detail {
       display: none;
   }
+
+  .edit-class-form {
+      display: none;
+  }
