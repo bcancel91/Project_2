@@ -28,24 +28,25 @@ $(document).ready(function () {
       return;
     }
     createClass(classData.topic, classData.description, classData.datetime, classData.duration, classData.capacity, classData.price);
-    //   topicInput.val("");
-    //   descriptInput.val("");
-    //   $('input[name=studOrInst]:checked',
-    //     '#s').val("");
+   
   });
 
   function createClass(topic, description, datetime, duration, capacity, price) {
-    $.post("/classes/add", {
+    $.post("/instructors", {
         topic: topic,
         description: description,
         datetime: datetime,
         duration: duration,
         capacity: capacity,
-        price: price
+        price: price,
       })
-      .then(addedClass => {
-        res.redirect ("/classes/all")
-        // If there's an error, handle it by throwing up a bootstrap alert
+      .then(data => {
+        // console.log(data)
+         //none of tese options actually reloads the page to show the last added class :(
+        window.location.href = "/instructors"
+        // res.render("instructors")
+        // window.location.reload();
+        // window.location.replace("/instructors");
       })
       .catch(error => console.log(error));
   };
