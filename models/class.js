@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         duration: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.TIME,
             allowNull: false,
             validate: {
 

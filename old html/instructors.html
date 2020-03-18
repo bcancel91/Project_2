@@ -30,31 +30,6 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-        <div class="container-fluid">
-
-            <a class="navbar-brand" href="#"><img src=""> <h2>tutorMe</h2></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span> 
-            </button>
-           
-            <div class="collapse navbar-collapse" id="navbarResponsive"> 
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                        <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
-                            </li>
-                            <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
-                            </li>
-                </ul>
-
-            </div>
-
-        </div>
-    </nav>
 
   <div class="wrapper">
 
@@ -138,12 +113,45 @@
     </nav>
 
     <!-- Page Content -->
-   
-      <!-- We'll fill this with dummy content -->
-        <!-- navbar -->
 
-    
-       
+    <!-- We'll fill this with dummy content -->
+    <!-- navbar -->
+    <div class="container-fluid" id="content">
+
+      <nav class="navbar navbar-expand-md navbar-light bg-light ">
+        <div class="container-fluid">
+
+          <a class="navbar-brand" href="#"><img src="">
+            <h2>tutorMe</h2>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+      </nav>
+
+
+
+
 
 
 
@@ -278,11 +286,52 @@
 
       </div>
 
+      <!-- footer -->
+      <footer>
+        <div class="container-fluid padding">
+          <div class="row text-center">
+            <div class="col-md-4">
+              <h4>Resources</h4>
+              <hr class="light">
+              <a href="https://www.github.com/" target="_blank"><i class="fab fa-github fa-3x"></i></a>
+              <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube fa-3x"></i></a>
+              <a href="https://stackoverflow.com" target="_blank"><i class="fab fa-stack-overflow fa-3x"></i></a>
+              <a href="https://getbootstrap.com" target="_blank"><i class="fab fa-bootstrap fa-3x"></i></a>
+              <a href="https://www.google.com/" target="_blank"><i class="fab fa-google fa-3x"></i></a>
+              <!-- neet to rplace with w3schools or delete 
+                        <i class="fab fa-github fa-3x"></i> -->
+
+            </div>
+            <div class="col-md-4">
+              <h4>Location</h4>
+              <hr class="light">
+              <p>Full-stack Flex Bootcamp</p>
+              <p>Georgia, Tech</p>
+              <p>Atlanta, GA</p>
+              <p>30308</p>
+            </div>
+            <div class="col-md-4">
+              <h4>Support</h4>
+              <hr class="light">
+              <p>tutorme.supoort@goodquestion.org</p>
+            </div>
+            <div class="col-12">
+              <hr class="light">
+              <h4>&copy; tutorme.com</h4>
+            </div>
+          </div>
+
+        </div>
+      </footer>
+
+
+
     </div>
 
   </div>
 
   <div class="overlay"></div>
+
 
 
   <!-- New class form -->
@@ -322,7 +371,7 @@
             <!-- Duration input -->
             <div class="form-group">
               <label class="control-label" for="time">Class duration(hours)</label>
-              <input type="number" class="form-control" required="required" id="time"/>
+              <input type="number" class="form-control" required="required" id="time" />
             </div>
             </form>
             <div class="form-group">
@@ -345,43 +394,6 @@
       </div>
     </div>
   </div>
-    <!-- footer -->
-    <footer>
-        <div class="container-fluid padding">
-            <div class="row text-center">
-                <div class="col-md-4">
-                        <h4>Resources</h4>
-                        <hr class="light">
-                        <a href="https://www.github.com/" target="_blank"><i class="fab fa-github fa-3x"></i></a>
-                        <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube fa-3x"></i></a>
-                        <a href="https://stackoverflow.com" target="_blank"><i class="fab fa-stack-overflow fa-3x"></i></a>
-                        <a href="https://getbootstrap.com" target="_blank"><i class="fab fa-bootstrap fa-3x"></i></a>
-                        <a href="https://www.google.com/" target="_blank"><i class="fab fa-google fa-3x"></i></a>
-                   <!-- neet to rplace with w3schools or delete 
-                        <i class="fab fa-github fa-3x"></i> -->
-                        
-                </div>
-                <div class="col-md-4">
-                        <h4>Location</h4>
-                        <hr class="light">
-                        <p>Full-stack Flex Bootcamp</p>
-                        <p>Georgia, Tech</p>
-                        <p>Atlanta, GA</p>
-                        <p>30308</p>
-                </div>
-                <div class="col-md-4">
-                        <h4>Support</h4>
-                        <hr class="light">
-                        <p>tutorme.supoort@goodquestion.org</p>
-                </div>
-                <div class="col-12">
-                    <hr class="light">
-                    <h4>&copy; tutorme.com</h4>
-                </div>
-            </div>
-          
-        </div>
-      </footer>
 
 
   <script>

@@ -28,15 +28,11 @@ $(document).ready(function () {
       return;
     }
     createClass(classData.topic, classData.description, classData.datetime, classData.duration, classData.capacity, classData.price);
-    //   topicInput.val("");
-    //   descriptInput.val("");
-    //   $('input[name=studOrInst]:checked',
-    //     '#s').val("");
     window.location.reload();
   });
 
   function createClass(topic, description, datetime, duration, capacity, price) {
-    $.post("/instructors/classes", {
+    $.post("/instructors", {
         topic: topic,
         description: description,
         datetime: datetime,
@@ -45,8 +41,7 @@ $(document).ready(function () {
         price: price
       })
       .then(addedClass => {
-        res.render ("/instructors")
-        // If there's an error, handle it by throwing up a bootstrap alert
+        res.render("instructors")
       })
       .catch(error => console.log(error));
   };
