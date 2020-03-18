@@ -183,7 +183,10 @@ text-shadow: 1px 1px 10px #000;
     
   }
 
-
+.nav-signup-login {
+   margin-top: 0px !important;
+   color: white !important;
+}
 
 
 
