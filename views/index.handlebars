@@ -1,9 +1,14 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" id="navTop">
     <div class="container-fluid">
 
         <a class="navbar-brand" href="#"><img src="">
-            <h2>this is handlebars!</h2>
+            <h2 class="ml-4">tutorMe!</h2>
         </a>
+        <h1 class="ml4 text-center d-none d-md-flex justify-content-center pl-4">
+                    <div><span class="letters letters-1">What in the world...</span></div>
+                    <div><span class="letters letters-2">is tutorMe?</span></div>
+                    <div><span class="letters letters-3">Great question!</span></div>
+        </h1>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,21 +16,21 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="#navTop">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link login-modal-btn mt-4 nav-signup-login btn btn-primary" data-toggle="modal"
+                    <a class="nav-link login-modal-btn"  data-toggle="modal"
                         data-target=".bd-example-modal-lg-1">Log
                         in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link signup-modal-btn mt-4 nav-signup-login btn btn-primary" data-toggle="modal"
+                    <a class="nav-link signup-modal-btn"   data-toggle="modal"
                         data-target=".bd-example-modal-lg-1">Sign
                         up</a>
                 </li>
@@ -40,34 +45,28 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <div class="parallax2 text-center">
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-4 pt-1">
-                <img src="/public/images/woman-in-yellow-shirt-sitting-on-brown-wooden-folding-chair-3785612.jpg"
-                    class="img-fluid">
-            </div>
-            <div class="col-1"></div>
-            <div class="col-5 text-center">
-                <h1>Learn Anywhere with Zoom</h1>
-                <a href="https://zoom.us/home?zcid=2478" src="_blank" class="bold-link"></a>
 
+    <div class="parallax2  row"> 
+
+            <div class="col-2"></div>
+            <div class="col-3 text-center">
+                <h5 class="background m-4">Learn at your own comfort</h5>
             </div>
-        </div>
+            <div class="col-2 text-center"> 
+                <h5 class="background m-1">learn from anyone</h5>
+            </div>
+            <div class="col-3 text-center">
+                <h5 class="background m-4">Learn Anywhere with Zoom</h5>
+            </div>
+            <div class="col-2"></div>
     </div>
 </div>
 <div class="container-fluid">
-    <div class="row jumbtron mt-3">
+    <div class="row jumbtron mt-3" id="about">
 
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10 p-2">
-
-
             <p class="lead">
-                <h1 class="ml4 text-center">
-                    <span class="letters letters-1">What in the world</span>
-                    <span class="letters letters-2">is tutorMe?</span>
-                    <span class="letters letters-3">Great question!</span>
-                </h1>An online tutoring service that is available to you from anywhere. link with others who have
+                An online tutoring service that is available to you from anywhere. link with others who have
                 already mastered what you are learning. everyone is good at something in their own way, here at
                 tutorMe if you feel like you have a good grasp on a language or framework simply select from the
                 listed provided and let others learn from you.
@@ -91,33 +90,6 @@
 
     </div>
 </div>
-
-<!-- carousel -->
-<div id="slides" class="carousel slide" data-ride="carousel">
-    <ul class="carousel-indicators">
-        <li data-targert="#slides" data-slide-to="0" class="active"></li>
-        <li data-targert="#slides" data-slide-to="1"></li>
-        <li data-targert="#slides" data-slide-to="2"></li>
-    </ul>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="/public/images/woman-in-yellow-shirt-sitting-on-brown-wooden-folding-chair-3785612.jpg">
-            <div class="carousel-caption">
-                <h1 class="display-2">tutorMe</h1>
-                <h3>Layout View</h3>
-                <button type="button" class="btn btn-outline-light btn-lg">View Demo</button>
-                <button type="button" class="btn btn-primary  btn-lg">Get Started</button>
-            </div>
-        </div>
-        <div class="carsousel-item">
-            <img src="">
-        </div>
-        <div class="carsousel-item">
-            <img src="">
-        </div>
-
-
-    </div>
 
 
     <!-- Login/Signup Modal -->
@@ -224,8 +196,8 @@
         <div class="row welcome text-center">
             <div class="col-12">
                 <h1 class="display-4">LET LEARNING BE SIMPLE</h1>
-                <p>No more traveling to students' homes, libraries, or schools to conduct tutoring sessions.</p>
-                <p>Organize tutoring environments to fit your schedule with Zoom.</p>
+                <p>No more traveling to each others homes, libraries, or schools to conduct tutoring sessions.</p>
+                <p>Organize tutoring environments to fit your schedule</p>
                 <p>Learning should be fast, simple and easy.</p>
 
 
@@ -235,7 +207,7 @@
     </div>
     <!-- Profiles -->
 
-    <div class="container-fluid padding">
+    <div class="container-fluid padding" id="contact">
 
         <h1 class="ml11 text-center">
             <span class="text-wrapper">
@@ -245,12 +217,12 @@
         </h1>
 
 
-        <div class="row padding">
+        <div class="row">
 
             <div class="col-md-4">
                 <div class="card">
                     <img class="card-imd-top profile1" src="">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h4 class="card-title">Daria</h4>
                         <p class="card-text">tons of exp</p>
                         <a href="#" class="btn btn-outline-secondary url1">View Github Profile<br><i
@@ -261,7 +233,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <img class="card-imd-top profile2" src="">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h4 class="card-title">Gus</h4>
                         <p class="card-text">tons of exp</p>
                         <a href="#" class="btn btn-outline-secondary url2">View Github Profile<br><i
@@ -272,7 +244,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <img class="card-imd-top profile3" src="">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h4 class="card-title">Brian</h4>
                         <p class="card-text">tons of exp</p>
                         <a href="#" class="btn btn-outline-secondary url3">View Github Profile<br><i
@@ -394,12 +366,12 @@
             var ml4 = {};
             ml4.opacityIn = [0, 1];
             ml4.scaleIn = [0.2, 1];
-            ml4.scaleOut = 3;
+            ml4.scaleOut = 2;
             ml4.durationIn = 800;
             ml4.durationOut = 600;
             ml4.delay = 500;
 
-            anime.timeline({ loop: false })
+            anime.timeline({ loop: true })
                 .add({
                     targets: '.ml4 .letters-1',
                     opacity: ml4.opacityIn,
