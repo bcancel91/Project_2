@@ -145,7 +145,8 @@
                             <li class="list-group-item">Price: ${{price}}</li>
                         </ul>
                         <button type="button" class="btn btn-primary view-class" data-toggle="modal"
-                            data-target="#classDetails" data-class-id={{id}}>
+                            data-target="#classDetails" data-class-id={{id}} data-backdrop="static"
+                            data-keyboard="false">
                             View Class
                         </button>
 
@@ -250,9 +251,9 @@
 
                 {{!-- add a modal here to doublecheck user's click on delete button --}}
                 <div class="modal-footer">
-                     <button type="button" class="btn btn-secondary add-class-btn">Add this class</button>
+                    <button type="button" class="btn btn-secondary add-class-btn">Add this class</button>
                     <a href="mailto:{{instructEmail}}" class="btn btn-danger">Email instructor</a>
-            
+
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         id="details-close-btn">Close</button>
                     {{!-- <button type="submit" form="l" class="btn btn-default">Login</button> --}}
