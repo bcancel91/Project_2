@@ -34,7 +34,7 @@ module.exports = function (app) {
 
     });
 
-    app.post("/api/instructors/update", isInstructor, (req, res) => {
+    app.put("/api/instructors/update", isInstructor, (req, res) => {
         console.log(req.body);
         let classid = req.body.id;
         delete req.body.id;
@@ -43,7 +43,19 @@ module.exports = function (app) {
             where: {
                 id: classid
             }
-        }).then(result => {
+        }).then(() => {
+            res.sendStatus(200);
+        });
+    });
+
+    app.delete("/api/instructors/delete", isInstructor, (req, res) => {
+        console.log(req.body.id);
+
+        db.Class.destroy({
+            where: {
+                id: req.body.id
+            }
+        }).then(() => {
             res.sendStatus(200);
         });
     });

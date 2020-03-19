@@ -310,7 +310,7 @@
                                     <li class="list-group-item">Date and Time: {{datetime}}</li>
                                     <li class="list-group-item">Class Duration: {{duration}}</li>
                                     <li class="list-group-item">Class Capacity: {{capacity}} persons</li>
-                                    <li class="list-group-item">Price: {{price}}</li>
+                                    <li class="list-group-item">Price: ${{price}}</li>
                                 </ul>
 
                             </div>
@@ -322,7 +322,8 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary edit-class-btn" data-toggle="modal"
                         data-target="#editClass" data-backdrop="static" data-keyboard="false">Edit</button>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <button type="button" class="btn btn-danger remove-class-btn" data-toggle="modal"
+                        data-target="#deleteClass" data-backdrop="static" data-keyboard="false">Remove</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         id="details-close-btn">Close</button>
                     {{!-- <button type="submit" form="l" class="btn btn-default">Login</button> --}}
@@ -409,6 +410,35 @@
         </div>
     </div>
 
+    {{!-- Delete class modal: are you sure you want to delete? --}}
+    <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true" id="deleteClass">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Are you sure??</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="delete-x-btn">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Are you sure you want to remove this class? Removing the class will delete it from our database
+                        and there is NO going back from this action!</p>
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="delete-close-btn">Nah, I'll
+                        keep it</button>
+                    <button type="button" class="btn btn-danger delete-btn">Delete it forever</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
     <script>
@@ -432,7 +462,10 @@
             // VIEW ON CLICK
             $(".view-class").on("click", function () {
                 let classid = $(this).data("class-id");
+                // edit data id
                 $(".edit-class-btn").data("class-id", classid);
+                // remove data id
+                $(".delete-btn").data("class-id", classid);
 
                 // show that class 
                 $(`#class-${classid}`).show();
@@ -441,11 +474,13 @@
                 // hide the class we just showed on close
                 $("#details-close-btn").on("click", function () {
                     $(".edit-class-btn").removeData("class-id");
+                    $(".delete-btn").removeData("class-id");
                     $(`#class-${classid}`).hide();
                 });
                 // hide the class we just showed on close
                 $("#view-x-btn").on("click", function () {
                     $(".edit-class-btn").removeData("class-id");
+                    $(".delete-btn").removeData("class-id");
                     $(`#class-${classid}`).hide();
 
                     // });
@@ -479,6 +514,21 @@
                         $("#classDetails").show();
                     });
 
+                });
+
+                $(".remove-class-btn").on("click", function () {
+                    // hide view modal
+                    $("#classDetails").hide();
+
+                    // hide class info we just edited on close and show the class details modal
+                    $("#delete-close-btn").on("click", function () {
+                        $("#classDetails").show();
+                    });
+
+                    // hide class info we just edited on close and show the class details modal
+                    $("#delete-x-btn").on("click", function () {
+                        $("#classDetails").show();
+                    });
                 });
 
 
