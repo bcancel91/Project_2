@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
       });
-      UserClass.belongsTo(models.Student, {
+      UserClass.belongsTo(models.User, {
         foreignKey: {
           allowNull: false
         }
