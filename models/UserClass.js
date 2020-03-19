@@ -27,11 +27,11 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
         }
       });
-      UserClass.belongsTo(models.Instructor, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
+      // UserClass.belongsTo(models.Instructor, {
+      //   foreignKey: {
+      //     allowNull: false
+      //   }
+      // });
     };
     return UserClass;
   };
