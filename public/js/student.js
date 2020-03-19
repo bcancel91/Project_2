@@ -7,16 +7,16 @@ $(document).ready(function () {
 
   $(".add-class-btn").on("click", function () {
     let classid = $(this).data("class-id");
-    // let studentId = req.user.id;
-    // how to get studentId?
     console.log("before $.post", classid);
-    $.post("/api/students/add", { id: classid })
+    $.post("/api/students/add", {
+        id: classid
+      })
       .then(response => {
         // console.log(response);
         if (response === "OK") {
           $(".add-class-btn").removeData("class-id");
           $(`#class-${classid}`).hide();
-          window.location.href = "/students";
+          window.location.href = "/students/enrolled";
         }
       });
   });

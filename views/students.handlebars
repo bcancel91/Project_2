@@ -1,5 +1,5 @@
 <div class="wrapper">
-<!-- Sidebar with filters -->
+    <!-- Sidebar with filters -->
     <nav id="sidebar">
         <div id="dismiss">
             <i class="fas fa-arrow-left"></i>
@@ -16,10 +16,10 @@
                     class="dropdown-toggle">Classes:</a>
                 <ul class="collapse list-unstyled" id="classesSubmenu">
                     <li>
-                        <a href="#">My Classes</a>
+                        <a href="/students/enrolled">My Classes</a>
                     </li>
                     <li>
-                        <a href="#">All Classes</a>
+                        <a href="/students">All Classes</a>
                     </li>
                 </ul>
             </li>
@@ -80,7 +80,7 @@
 
     </nav>
 
-{{!-- NavBar --}}
+    {{!-- NavBar --}}
 
     <div class="container-fluid" id="content">
 
@@ -106,7 +106,7 @@
             </div>
         </nav>
 
-{{!-- student options panel --}}
+        {{!-- student options panel --}}
 
         <div class="classes-view">
 
@@ -127,7 +127,7 @@
             </div>
 
 
-{{!-- all classes view --}}
+            {{!-- all classes view --}}
 
             <div class="container classes-view">
 
@@ -149,22 +149,23 @@
                             <li class="list-group-item">Capacity: {{capacity}} people</li>
                             <li class="list-group-item">Price: ${{price}}</li>
                         </ul>
-                        <button type="button" class="btn btn-primary view-class" data-toggle="modal"
-                            data-target="#classDetails" data-class-id={{id}} data-backdrop="static"
-                            data-keyboard="false">
+                        <button class="btn btn-primary view-class" data-toggle="modal" data-target="#classDetails"
+                            data-class-id={{id}} data-backdrop="static" data-keyboard="false">
                             View Class
                         </button>
+
+                        <form action="/api/removeclass/{{id}}" method="get">
+                            <input type="submit" value="X" class="btn btn-danger">
+                        </form>
                         {{!-- add a modal here to doublecheck user's click on delete button --}}
                     </div>
                 </div>
-                {{else}}
-                <p>No classes available at the moment.</p>
                 {{!-- <a href="#" class="btn btn-primary">New class</a> --}}
                 {{/each}}
             </div>
         </div>
 
-{{!-- View Class Details Modal --}}
+        {{!-- View Class Details Modal --}}
 
         <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true" id="classDetails">
@@ -181,7 +182,7 @@
                     <div class="modal-body">
                         <div class="all-class-details">
                             {{#each classes}}
-                            <div class="card class-detail" id="class-{{id}}">
+                            <div class="card class-detail" id="class-{{id}}" style="display: none;">
                                 <h5 class="card-header">{{topic}}</h5>
                                 <div class="card-body">
                                     <ul class="list-group list-group-flush">
@@ -219,7 +220,7 @@
             </div>
         </div>
 
-{{!-- footer --}}
+        {{!-- footer --}}
 
         <footer>
             <div class="container-fluid padding">
@@ -305,7 +306,3 @@
         });
     });
 </script>
-
-<script type="text/javascript" src="js/class.js"></script>
-<script type="text/javascript" src="js/instructor.js"></script>
-<script type="text/javascript" src="js/student.js"></script>

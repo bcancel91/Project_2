@@ -15,7 +15,7 @@ module.exports = function (app) {
             UserId: req.user.id
         }
 
-        // console.log('hit', studentClass);
+        console.log('hit', studentClass);
 
         db.UserClass.create(studentClass).then(() => {
             // console.log(addedIds);
@@ -23,30 +23,50 @@ module.exports = function (app) {
         });
     });
 
-      // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/api/students/myclasses", isStudent, (req, res) => {
-    // here we need to find all classes that belong to this student
-    db.UserClass.findAll({
-    }).then(function (studentClass) {
-      res.json(studentClass);
-      console.log(req.user);
-      // const instructorClasses = dbClass.filter(classItem => {
-      //     return classItem.instructorId === req.user.id;
-      // });
-      // console.log(instructorClasses);
+    // Here we've add our isAuthenticated middleware to this route.
+    // If a user who is not logged in tries to access this route they will be redirected to the signup page
+    app.get("/api/students/myclasses", isStudent, (req, res) => {
+        // here we need to find all classes that belong to logged in student
+        db.UserClass.findAll({
+            where: {
+                UserId: req.user.id
+            },
+            include: [db.Class],
+        }).then(function (classArr) {
 
-      studentClassVals = studentClass.map(classObj => {
-        return classObj.dataValues;
-      });
+            console.log(classArr)
+            let classId = classArr.UserClass.dataValues.id;
+            console.log(classId)
 
-      let hbsObject = {
-        classes: studentClassVals,
-      };
-      // console.log(hbsObject);
-      res.render("students", hbsObject);
+            // db.Class.findAll({
+            //     where: {
+            //         id: classId
+            //     }
+            // }).then(function (classInfo) {
+            // console.log(classInfo)
+            //     let data= {
+            //         topic: ClassInfo.topic,
+            //         description: ClassInfo.description,
+            //         datetime: ClassInfo.datetime,
+            //         duration: ClassInfo.duration,
+            //         capacity: ClassInfo.capacity,
+            //         price: ClassInfo.price,
+            //     }
+            //    console.log(data);
+            //    res.render('students', {data:data})
 
-    });
-});
+            // })
+        })
+    })
+
+    app.get("/api/removeclass/:id", isStudent, (req, res) => {
+        db.UserClass.destroy({
+            where: {
+                UserId: req.user.id,
+                ClassId: req.params.id
+            }
+        }).then(data => {
+            res.redirect("/students/enrolled")
+        })
+    })
 }
-

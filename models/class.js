@@ -42,7 +42,10 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
 
             }
-        }
+        },
+        // states: {
+        //     values: ['active','cancelled']
+        // }
     });
 
     Class.associate = function (models) {
