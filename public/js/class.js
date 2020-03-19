@@ -78,7 +78,11 @@ $(document).ready(function () {
 
     console.log(classData);
 
-    $.post("/api/instructors/update", classData)
+
+    $.ajax("/api/instructors/update", {
+      method: "PUT",
+      data: classData
+    })
       .then(response => {
         console.log(response);
         if (response === "OK") {
@@ -89,6 +93,25 @@ $(document).ready(function () {
         }
       })
 
+  });
+
+  $(".delete-btn").on("click", function () {
+    let classid = $(this).data("class-id");
+    console.log("hit", classid)
+
+    $.ajax("/api/instructors/delete", {
+      method: "DELETE",
+      data: { id: classid }
+    })
+      .then(response => {
+        console.log(response);
+        if (response === "OK") {
+          $(".delete-btn").removeData("class-id");
+          $("#deleteClass").hide();
+
+          window.location.href = "/instructors";
+        }
+      });
   });
 
 });
