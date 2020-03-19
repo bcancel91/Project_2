@@ -28,6 +28,7 @@ app.set("view engine", "handlebars");
 require("./routes/api-routes.js")(app);
 require("./routes/instructor-class-routes.js")(app);
 require("./routes/html-routes.js")(app);
+require("./routes/student-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function () {
