@@ -1,6 +1,5 @@
 <div class="wrapper">
-
-    <!-- Sidebar -->
+<!-- Sidebar with filters -->
     <nav id="sidebar">
         <div id="dismiss">
             <i class="fas fa-arrow-left"></i>
@@ -81,6 +80,7 @@
 
     </nav>
 
+{{!-- NavBar --}}
 
     <div class="container-fluid" id="content">
 
@@ -88,7 +88,7 @@
             <div class="container-fluid">
 
                 <a class="navbar-brand" href="#"><img src="">
-                    <h2>handlebars</h2>
+                    <h2>Welcome <span class="student-name"></span>!</h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                     <span class="navbar-toggler-icon"></span>
@@ -106,12 +106,14 @@
             </div>
         </nav>
 
+{{!-- student options panel --}}
+
         <div class="classes-view">
 
             <div class="classes-header">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
-                        <h2><span class="instructor-name"></span>'s Classes</h2>
+                        <h2>All Classes</h2>
 
                         <nav>
                             <button type="button" id="sidebarCollapse" class="btn btn-info">
@@ -123,6 +125,9 @@
                     </div>
                 </nav>
             </div>
+
+
+{{!-- all classes view --}}
 
             <div class="container classes-view">
 
@@ -149,18 +154,72 @@
                             data-keyboard="false">
                             View Class
                         </button>
-
                         {{!-- add a modal here to doublecheck user's click on delete button --}}
                     </div>
                 </div>
-
                 {{else}}
                 <p>No classes available at the moment.</p>
                 {{!-- <a href="#" class="btn btn-primary">New class</a> --}}
                 {{/each}}
             </div>
-
         </div>
+
+{{!-- View Class Details Modal --}}
+
+        <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true" id="classDetails">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Login Modal Content -->
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Class Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="view-x-btn">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="all-class-details">
+                            {{#each classes}}
+                            <div class="card class-detail" id="class-{{id}}">
+                                <h5 class="card-header">{{topic}}</h5>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <p class="card-text">What you'll learn: {{description}}</p>
+                                        <br>
+                                        {{!-- the line below will be visible only for getting all classes from all instructors --}}
+                                        {{!-- maybe link instructor name to instructor's profile page --}}
+                                        <li class="list-group-item">
+                                            <h5 class="card-title">Instructor: {{InstructorId}}</h5>
+                                        </li>
+                                        <li class="list-group-item">Date and Time: {{datetime}}</li>
+                                        <li class="list-group-item">Class Duration: {{duration}} minutes</li>
+                                        <li class="list-group-item">Class Capacity: {{capacity}} people</li>
+                                        <li class="list-group-item">Price: {{price}}</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+
+                        {{!-- add a modal here to doublecheck user's click on delete button --}}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary add-class-btn">Add this class</button>
+                            <a href="mailto:{{instructEmail}}" class="btn btn-danger">Email instructor</a>
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                id="details-close-btn">Close</button>
+                            {{!-- <button type="submit" form="l" class="btn btn-default">Login</button> --}}
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+{{!-- footer --}}
 
         <footer>
             <div class="container-fluid padding">
@@ -208,62 +267,6 @@
 
 <div class="overlay"></div>
 
-<!-- footer -->
-
-{{!-- View Class Details Modal --}}
-
-<div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true" id="classDetails">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <!-- Login Modal Content -->
-
-            <div class="modal-header">
-                <h5 class="modal-title">Class Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="view-x-btn">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="all-class-details">
-                    {{#each classes}}
-                    <div class="card class-detail" id="class-{{id}}">
-                        <h5 class="card-header">{{topic}}</h5>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <p class="card-text">What you'll learn: {{description}}</p>
-                                <br>
-                                {{!-- the line below will be visible only for getting all classes from all instructors --}}
-                                {{!-- maybe link instructor name to instructor's profile page --}}
-                                <li class="list-group-item">
-                                    <h5 class="card-title">Instructor: {{InstructorId}}</h5>
-                                </li>
-                                <li class="list-group-item">Date and Time: {{datetime}}</li>
-                                <li class="list-group-item">Class Duration: {{duration}} minutes</li>
-                                <li class="list-group-item">Class Capacity: {{capacity}} people</li>
-                                <li class="list-group-item">Price: {{price}}</li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    {{/each}}
-                </div>
-
-                {{!-- add a modal here to doublecheck user's click on delete button --}}
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary add-class-btn">Add this class</button>
-                    <a href="mailto:{{instructEmail}}" class="btn btn-danger">Email instructor</a>
-
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="details-close-btn">Close</button>
-                    {{!-- <button type="submit" form="l" class="btn btn-default">Login</button> --}}
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</div>
 
 <script>
     $(document).ready(function () {
