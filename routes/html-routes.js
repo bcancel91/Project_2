@@ -15,7 +15,7 @@ module.exports = function (app) {
     db.Class.findAll({
     }).then(function (dbClass) {
       // res.json(dbClass);
-      console.log(req.user);
+      // console.log(req.user);
       // const instructorClasses = dbClass.filter(classItem => {
       //     return classItem.instructorId === req.user.id;
       // });
@@ -29,7 +29,7 @@ module.exports = function (app) {
         classes: dbClassValues,
         // instructorClasses: instructorClasses
       };
-      console.log(hbsObject);
+      // console.log(hbsObject);
       res.render("instructors", hbsObject);
 
     });
