@@ -12,8 +12,7 @@ module.exports = function (app) {
     // here we need to find all classes, sorted by date, and put in hbs object containing the classes
 
 
-    db.Class.findAll({
-    }).then(function (dbClass) {
+    db.Class.findAll({}).then(function (dbClass) {
       // res.json(dbClass);
       // console.log(req.user);
       // const instructorClasses = dbClass.filter(classItem => {
@@ -40,10 +39,9 @@ module.exports = function (app) {
 
   app.get("/students", isStudent, (req, res) => {
 
-    db.Class.findAll({
-    }).then(function (dbClass) {
+    db.Class.findAll({}).then(function (dbClass) {
       // res.json(dbClass);
-      console.log(req.user);
+      // console.log(req.user);
       // const instructorClasses = dbClass.filter(classItem => {
       //     return classItem.instructorId === req.user.id;
       // });
@@ -54,14 +52,34 @@ module.exports = function (app) {
       });
 
       let hbsObject = {
+        my: false,
+        all: true,
         classes: dbClassValues,
         // instructorClasses: instructorClasses
       };
-      console.log(hbsObject);
+      // console.log(hbsObject);
       res.render("students", hbsObject);
 
     });
   });
+
+  app.get("/students/enrolled", isStudent, (req, res) => {
+    db.UserClass.findAll({
+      where: {
+        UserId: req.user.id,
+      },
+      include: [db.Class],
+    }).then(classArr => {
+      console.log(classArr.map(c => c.dataValues.Class.dataValues))
+
+      res.render("students", {
+        my: true,
+        all: false,
+        classes: classArr.map(c => c.dataValues.Class.dataValues)
+      })
+    })
+
+  })
 
   app.get('/', (req, res) => {
 
