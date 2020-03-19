@@ -239,7 +239,7 @@
                                 </li>
                                 <li class="list-group-item">Date and Time: {{datetime}}</li>
                                 <li class="list-group-item">Class Duration: {{duration}}</li>
-                                <li class="list-group-item">Class Capacity: {{capacity}} persons</li>
+                                <li class="list-group-item">Class Capacity: {{capacity}} people</li>
                                 <li class="list-group-item">Price: {{price}}</li>
                             </ul>
 
@@ -250,8 +250,9 @@
 
                 {{!-- add a modal here to doublecheck user's click on delete button --}}
                 <div class="modal-footer">
-                    <a href="#" class="btn btn-secondary">Add this class</a>
-                    <a href="#" class="btn btn-danger">Email instructor</a>
+                     <button type="button" class="btn btn-secondary add-class-btn">Add this class</button>
+                    <a href="mailto:{{instructEmail}}" class="btn btn-danger">Email instructor</a>
+            
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         id="details-close-btn">Close</button>
                     {{!-- <button type="submit" form="l" class="btn btn-default">Login</button> --}}
@@ -286,15 +287,21 @@
             console.log(`#class-${classid}`);
             $(`#class-${classid}`).show();
 
+            $(".add-class-btn").data("class-id", classid);
+
             $("#details-close-btn").on("click", function () {
+                $(".add-class-btn").removeData("class-id");
                 $(`#class-${classid}`).hide();
             });
 
             $("#view-x-btn").on("click", function () {
+                $(".add-class-btn").removeData("class-id");
                 $(`#class-${classid}`).hide();
             });
         });
     });
 </script>
+
 <script type="text/javascript" src="js/class.js"></script>
 <script type="text/javascript" src="js/instructor.js"></script>
+<script type="text/javascript" src="js/student.js"></script>
