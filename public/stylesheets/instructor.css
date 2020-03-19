@@ -190,5 +190,12 @@ footer{
     margin-top: 75px;
     margin-left: -20px;
     margin-right: -20px;
-    
+  }
+
+  .class-detail {
+      display: none;
+  }
+
+  .edit-class-form {
+      display: none;
   }

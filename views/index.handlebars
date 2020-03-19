@@ -19,6 +19,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link login-modal-btn mt-4 nav-signup-login btn btn-primary" data-toggle="modal"
+                        data-target=".bd-example-modal-lg-1">Log
+                        in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link signup-modal-btn mt-4 nav-signup-login btn btn-primary" data-toggle="modal"
+                        data-target=".bd-example-modal-lg-1">Sign
+                        up</a>
+                </li>
+
+
+
+
             </ul>
 
         </div>
@@ -153,6 +167,8 @@
                                 <input type="email" class="form-control" id="email-input1" placeholder="Email">
                             </div>
                             <div class="form-group">
+
+                                {{!-- set a minimum length for the password using the minlength attribute. --}}
                                 <label for="exampleInputPassword1">Password</label>
                                 <input type="password" class="form-control" id="password-input1" placeholder="Password">
                             </div>

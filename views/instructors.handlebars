@@ -99,17 +99,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </ul>
 
@@ -117,11 +108,6 @@
 
             </div>
         </nav>
-
-
-
-
-
 
 
         <div class="classes-view">
@@ -138,7 +124,7 @@
                             </button>
 
                             <button type="button" class="btn btn-secondary login-modal-btn" data-toggle="modal"
-                                data-target=".bd-example-modal-lg-1">New class</button>
+                                data-target="#add-class">New class</button>
                         </nav>
 
                     </div>
@@ -147,251 +133,407 @@
 
 
             {{!-- Here we will out handlebars for loading the class data --}}
-
             {{!-- to do that, we need a function that finds all classes, in order of soonest to latest, and puts the results in a HBS object --}}
             <div class="container classes-view">
 
-                {{!-- each row was meant to be a class --}}
-                <div class="row">
-                    <div class="col-2">
-                        <h5>Topic</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5>Instructor</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5>Start Time</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5>Duration</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5>Price</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5>Capacity</h5>
+                {{#each classes}}
+
+                <div class="card">
+                    <h5 class="card-header">{{topic}}</h5>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <p class="card-text">What you'll learn: {{description}}</p>
+                            <br>
+                            {{!-- the line below will be visible only for getting all classes from all instructors --}}
+                            {{!-- maybe link instructor name to instructor's profile page --}}
+                            <li class="list-group-item">
+                                <h5 class="card-title">Instructor: {{InstructorId}}</h5>
+                            </li>
+                            <li class="list-group-item">Date and Time: {{datetime}}</li>
+                            <li class="list-group-item">Duration: {{duration}} Minutes</li>
+                            <li class="list-group-item">Capacity: {{capacity}} people</li>
+                            <li class="list-group-item">Price: ${{price}}</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary view-class" data-toggle="modal"
+                            data-target="#classDetails" data-backdrop="static" data-keyboard="false"
+                            data-class-id={{id}}>
+                            View Class
+                        </button>
+                        {{!-- <a href="#" class="btn btn-secondary">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                        add a modal here to doublecheck user's click on delete button --}}
                     </div>
                 </div>
 
-                <div class="row class">
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                </div>
-
-                <div class="row class">
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                </div>
-
-                <div class="row class">
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                </div>
-
-                <div class="row class">
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Node</p>
-                    </div>
-                </div>
-
+                {{else}}
+                <p>No classes available at the moment.</p>
+                {{!-- <a href="#" class="btn btn-primary">New class</a> --}}
+                {{/each}}
             </div>
+
+
+            <!-- footer -->
+            <footer>
+                <div class="container-fluid padding">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <h4>Resources</h4>
+                            <hr class="light">
+                            <a href="https://www.github.com/" target="_blank"><i class="fab fa-github fa-3x"></i></a>
+                            <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube fa-3x"></i></a>
+                            <a href="https://stackoverflow.com" target="_blank"><i
+                                    class="fab fa-stack-overflow fa-3x"></i></a>
+                            <a href="https://getbootstrap.com" target="_blank"><i
+                                    class="fab fa-bootstrap fa-3x"></i></a>
+                            <a href="https://www.google.com/" target="_blank"><i class="fab fa-google fa-3x"></i></a>
+                            <!-- neet to rplace with w3schools or delete 
+                        <i class="fab fa-github fa-3x"></i> -->
+
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Location</h4>
+                            <hr class="light">
+                            <p>Full-stack Flex Bootcamp</p>
+                            <p>Georgia, Tech</p>
+                            <p>Atlanta, GA</p>
+                            <p>30308</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Support</h4>
+                            <hr class="light">
+                            <p>tutorme.supoort@goodquestion.org</p>
+                        </div>
+                        <div class="col-12">
+                            <hr class="light">
+                            <h4>&copy; tutorme.com</h4>
+                        </div>
+                    </div>
+
+                </div>
+            </footer>
 
         </div>
 
-        <!-- footer -->
-        <footer>
-            <div class="container-fluid padding">
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <h4>Resources</h4>
-                        <hr class="light">
-                        <a href="https://www.github.com/" target="_blank"><i class="fab fa-github fa-3x"></i></a>
-                        <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube fa-3x"></i></a>
-                        <a href="https://stackoverflow.com" target="_blank"><i
-                                class="fab fa-stack-overflow fa-3x"></i></a>
-                        <a href="https://getbootstrap.com" target="_blank"><i class="fab fa-bootstrap fa-3x"></i></a>
-                        <a href="https://www.google.com/" target="_blank"><i class="fab fa-google fa-3x"></i></a>
-                        <!-- neet to rplace with w3schools or delete 
-                        <i class="fab fa-github fa-3x"></i> -->
+    </div>
 
+    <div class="overlay"></div>
+
+
+    <!-- Add New Class Modal -->
+    <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true" id="add-class">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="option-add">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a new class</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="col-md-4">
-                        <h4>Location</h4>
-                        <hr class="light">
-                        <p>Full-stack Flex Bootcamp</p>
-                        <p>Georgia, Tech</p>
-                        <p>Atlanta, GA</p>
-                        <p>30308</p>
+                    <div class="modal-body">
+                        <form class="add-class" id="c">
+
+                            <div class="form-group">
+                                <label for="topic">Topic</label>
+                                <input type="input" required="required" class="form-control" id="topic-input"
+                                    placeholder="Javascript 101">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" required="required" rows="10" class="form-control"
+                                    id="description-input" placeholder="Notes about your offer">
+                            </div>
+                            <!-- Date and time input -->
+                            <div class="form-group">
+                                <label for="date">Date and Start Time</label>
+                                <input type="datetime-local" class="form-control" required="required" id="datetime"
+                                    name="date" placeholder="YYYY-MM-DD" value="2020-04-12T19:30" min="2020-03-17T00:00"
+                                    max="2027-03-17T00:00" />
+                            </div>
+                        </form>
+                        <!-- Duration input -->
+                        <div class="form-group">
+                            <label for="time">Class duration</label>
+                            <input type="number" class="form-control" required="required" id="time" />
+                        </div>
+                        </form>
+                        <div class="form-group">
+                            <label for="capacity">Class capacity</label>
+                            <input type="number" required="required" class="form-control" id="capacity-input"
+                                placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price: $</label>
+                            <input type="number" required="required" class="form-control" id="price-input">
+                        </div>
+                        <br />
+                        <p>See all classes <a href="/instructors">here</a></p>
                     </div>
-                    <div class="col-md-4">
-                        <h4>Support</h4>
-                        <hr class="light">
-                        <p>tutorme.supoort@goodquestion.org</p>
-                    </div>
-                    <div class="col-12">
-                        <hr class="light">
-                        <h4>&copy; tutorme.com</h4>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" form="c" class="btn btn-default">Add</button>
                     </div>
                 </div>
 
             </div>
-        </footer>
-
-
-
+        </div>
     </div>
 
-</div>
+    {{!-- View Class Details Modal --}}
+    <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true" id="classDetails">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-<div class="overlay"></div>
-
-
-
-<!-- New class form -->
-<div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-
-            <div class="option-add">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add a new class</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title">Class Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="view-x-btn">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="add-class" id="c">
+                    <div class="all-class-details">
+                        {{#each classes}}
+                        <div class="card class-detail" id="class-{{id}}">
+                            <h5 class="card-header">{{topic}}</h5>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <p class="card-text">What you'll learn: {{description}}</p>
+                                    <br>
+                                    {{!-- the line below will be visible only for getting all classes from all instructors --}}
+                                    {{!-- maybe link instructor name to instructor's profile page --}}
+                                    <li class="list-group-item">
+                                        <h5 class="card-title">Instructor: {{InstructorId}}</h5>
+                                    </li>
+                                    <li class="list-group-item">Date and Time: {{datetime}}</li>
+                                    <li class="list-group-item">Class Duration: {{duration}}</li>
+                                    <li class="list-group-item">Class Capacity: {{capacity}} persons</li>
+                                    <li class="list-group-item">Price: ${{price}}</li>
+                                </ul>
 
-                        <div class="form-group">
-                            <label for="topic">Topic</label>
-                            <input type="input" required="required" class="form-control" id="topic-input"
-                                placeholder="Javascript 101">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" required="required" rows="10" class="form-control" id="description-input"
-                                placeholder="Notes about your offer">
-                        </div>
-                        <!-- Date and time input -->
-                        <!-- <form method="post"> -->
-                        <div class="form-group">
-                            <label class="control-label" for="date">Date and Time</label>
-                            <input type="datetime-local" class="form-control" required="required" id="datetime"
-                                name="date" placeholder="YYYY-MM-DD" value="2020-04-12T19:30" min="2020-03-17T00:00"
-                                max="2027-03-17T00:00" />
-                        </div>
-                    </form>
-                    <!-- Duration input -->
-                    <div class="form-group">
-                        <label class="control-label" for="time">Class duration(hours)</label>
-                        <input type="number" class="form-control" required="required" id="time" />
+                        {{/each}}
                     </div>
-                    </form>
-                    <div class="form-group">
-                        <label for="capacity">Class capacity</label>
-                        <input type="number" required="required" class="form-control" id="capacity-input"
-                            placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Price: $</label>
-                        <input type="number" required="required" class="form-control" id="price-input">
-                    </div>
-                    <br />
-                    <p>See all classes <a href="/classes/all">here</a></p>
                 </div>
+                {{!-- add a modal here to doublecheck user's click on delete button --}}
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" form="c" class="btn btn-default">Add</button>
+                    <button type="button" class="btn btn-primary edit-class-btn" data-toggle="modal"
+                        data-target="#editClass" data-backdrop="static" data-keyboard="false">Edit</button>
+                    <button type="button" class="btn btn-danger remove-class-btn" data-toggle="modal"
+                        data-target="#deleteClass" data-backdrop="static" data-keyboard="false">Remove</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="details-close-btn">Close</button>
+                    {{!-- <button type="submit" form="l" class="btn btn-default">Login</button> --}}
                 </div>
-            </div>
 
+
+
+
+            </div>
         </div>
     </div>
-</div>
+
+    {{!-- Edit Class Modal --}}
+    <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true" id="editClass">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit class</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="edit-x-btn">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    {{#each classes}}
+                    <div class="edit-class-form" id="editClass-{{id}}">
+
+                        <form class="edit-form" id="edit-{{id}}">
+
+                            {{!-- Topic edit --}}
+                            <div class="form-group">
+                                <label for="topic">Topic</label>
+                                <input type="input" required="required" class="form-control" id="topic-edit-{{id}}"
+                                    value={{topic}}>
+                            </div>
+                            {{!-- Description edit --}}
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" required="required" rows="10" class="form-control"
+                                    id="description-edit-{{id}}" value={{description}}>
+                            </div>
+                            <!-- Date and time edit -->
+                            <div class="form-group">
+                                <label for="date">Date and Start Time</label>
+                                <input type="datetime-local" class="form-control" required="required"
+                                    id="datetime-edit-{{id}}" name="date" placeholder="YYYY-MM-DD"
+                                    value="2020-04-12T19:30" min="2020-03-17T00:00" max="2027-03-17T00:00" />
+                            </div>
+                            <!-- Duration edit -->
+                            <div class="form-group">
+                                <label for="time">Class duration</label>
+                                <input type="number" class="form-control" required="required" id="duration-edit-{{id}}"
+                                    value={{duration}} />
+                            </div>
+                            {{!-- Capacity edit --}}
+                            <div class="form-group">
+                                <label for="capacity">Class capacity</label>
+                                <input type="number" required="required" class="form-control" id="capacity-edit-{{id}}"
+                                    value={{capacity}}>
+                            </div>
+                            {{!-- Price edit --}}
+                            <div class="form-group">
+                                <label for="price">Price: $</label>
+                                <input type="number" required="required" class="form-control" id="price-edit-{{id}}"
+                                    value={{price}}>
+                            </div>
+                        </form>
+                    </div>
+                    {{/each}}
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default update-btn">Update</button>
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="edit-close-btn">Close</button>
+                </div>
 
 
-<script>
-    $(document).ready(function () {
-        $("#sidebar").mCustomScrollbar({
-            theme: "minimal"
+            </div>
+        </div>
+    </div>
+
+    {{!-- Delete class modal: are you sure you want to delete? --}}
+    <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true" id="deleteClass">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Are you sure??</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="delete-x-btn">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Are you sure you want to remove this class? Removing the class will delete it from our database
+                        and there is NO going back from this action!</p>
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="delete-close-btn">Nah, I'll
+                        keep it</button>
+                    <button type="button" class="btn btn-danger delete-btn">Delete it forever</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+
+            // VIEW ON CLICK
+            $(".view-class").on("click", function () {
+                let classid = $(this).data("class-id");
+                // edit data id
+                $(".edit-class-btn").data("class-id", classid);
+                // remove data id
+                $(".delete-btn").data("class-id", classid);
+
+                // show that class 
+                $(`#class-${classid}`).show();
+
+
+                // hide the class we just showed on close
+                $("#details-close-btn").on("click", function () {
+                    $(".edit-class-btn").removeData("class-id");
+                    $(".delete-btn").removeData("class-id");
+                    $(`#class-${classid}`).hide();
+                });
+                // hide the class we just showed on close
+                $("#view-x-btn").on("click", function () {
+                    $(".edit-class-btn").removeData("class-id");
+                    $(".delete-btn").removeData("class-id");
+                    $(`#class-${classid}`).hide();
+
+                    // });
+                });
+
+                // EDIT ON CLICK
+                $(".edit-class-btn").on("click", function () {
+                    let classid = $(this).data("class-id");
+                    console.log(classid);
+
+                    // add data attribute to update button so we know which inputs to grab
+                    $(".update-btn").data("class-id", classid);
+
+                    // hide view modal
+                    $("#classDetails").hide();
+
+                    // show correct form
+                    $(`#editClass-${classid}`).show();
+
+                    // hide class info we just edited on close and show the class details modal
+                    $("#edit-close-btn").on("click", function () {
+                        $(`#editClass-${classid}`).hide();
+
+                        $("#classDetails").show();
+                    });
+
+                    // hide class info we just edited on close and show the class details modal
+                    $("#edit-x-btn").on("click", function () {
+                        $(`#editClass-${classid}`).hide();
+
+                        $("#classDetails").show();
+                    });
+
+                });
+
+                $(".remove-class-btn").on("click", function () {
+                    // hide view modal
+                    $("#classDetails").hide();
+
+                    // hide class info we just edited on close and show the class details modal
+                    $("#delete-close-btn").on("click", function () {
+                        $("#classDetails").show();
+                    });
+
+                    // hide class info we just edited on close and show the class details modal
+                    $("#delete-x-btn").on("click", function () {
+                        $("#classDetails").show();
+                    });
+                });
+
+
+            });
         });
-
-        $('#dismiss, .overlay').on('click', function () {
-            $('#sidebar').removeClass('active');
-            $('.overlay').removeClass('active');
-        });
-
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').addClass('active');
-            $('.overlay').addClass('active');
-            $('.collapse.in').toggleClass('in');
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-        });
-    });
-</script>
-<script type="text/javascript" src="js/class.js"></script>
-<script type="text/javascript" src="js/instructor.js"></script>
+    </script>
+    <script type="text/javascript" src="js/class.js"></script>
+    <script type="text/javascript" src="js/instructor.js"></script>

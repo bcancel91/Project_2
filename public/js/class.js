@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+  // ADD CLASS FORM
   // Getting references to our form and input
   let classForm = $(".option-add");
   let topicInput = $("input#topic-input");
@@ -28,25 +30,89 @@ $(document).ready(function () {
       return;
     }
     createClass(classData.topic, classData.description, classData.datetime, classData.duration, classData.capacity, classData.price);
-    //   topicInput.val("");
-    //   descriptInput.val("");
-    //   $('input[name=studOrInst]:checked',
-    //     '#s').val("");
   });
+  // END ADD CLASS FORM
 
   function createClass(topic, description, datetime, duration, capacity, price) {
-    $.post("/classes/add", {
-        topic: topic,
-        description: description,
-        datetime: datetime,
-        duration: duration,
-        capacity: capacity,
-        price: price
-      })
-      .then(addedClass => {
-        res.redirect ("/classes/all")
-        // If there's an error, handle it by throwing up a bootstrap alert
+    $.post("/api/instructors/add", {
+      topic: topic,
+      description: description,
+      datetime: datetime,
+      duration: duration,
+      capacity: capacity,
+      price: price,
+    })
+      .then(data => {
+        // console.log(data)
+        //none of tese options actually reloads the page to show the last added class :(
+        window.location.href = "/instructors"
+        // res.render("instructors")
+        // window.location.reload();
+        // window.location.replace("/instructors");
       })
       .catch(error => console.log(error));
   };
+
+
+  // UPDATE CLASS FORM
+  $(".update-btn").on("click", function () {
+    console.log("hit");
+    let classid = $(this).data("class-id");
+
+    let topic = $(`input#topic-edit-${classid}`);
+    let description = $(`input#description-edit-${classid}`);
+    let date = $(`input#datetime-edit-${classid}`);
+    let duration = $(`input#duration-edit-${classid}`);
+    let capacity = $(`input#capacity-edit-${classid}`);
+    let price = $(`input#price-edit-${classid}`);
+
+    let classData = {
+      topic: topic.val().trim(),
+      description: description.val().trim(),
+      datetime: date.val().trim(),
+      duration: duration.val().trim(),
+      capacity: capacity.val().trim(),
+      price: price.val().trim(),
+      id: classid
+    };
+
+    console.log(classData);
+
+
+    $.ajax("/api/instructors/update", {
+      method: "PUT",
+      data: classData
+    })
+      .then(response => {
+        console.log(response);
+        if (response === "OK") {
+          $(".update-btn").removeData("class-id");
+          $("#editClass").hide();
+
+          window.location.href = "/instructors";
+        }
+      })
+
+  });
+
+  $(".delete-btn").on("click", function () {
+    let classid = $(this).data("class-id");
+    console.log("hit", classid)
+
+    $.ajax("/api/instructors/delete", {
+      method: "DELETE",
+      data: { id: classid }
+    })
+      .then(response => {
+        console.log(response);
+        if (response === "OK") {
+          $(".delete-btn").removeData("class-id");
+          $("#deleteClass").hide();
+
+          window.location.href = "/instructors";
+        }
+      });
+  });
+
 });
+
