@@ -92,6 +92,53 @@
 </div>
 
 
+{{!-- coffee break --}}
+
+{{!-- <div class="container-fluid espresso">
+
+    <div class="coffee-header">
+      <div class="coffee-header__buttons coffee-header__button-one"></div>
+      <div class="coffee-header__buttons coffee-header__button-two"></div>
+      <div class="coffee-header__display"></div>
+      <div class="coffee-header__details"></div>
+    </div>
+    <div class="coffee-medium">
+      <div class="coffe-medium__exit"></div>
+      <div class="coffee-medium__arm"></div>
+      <div class="coffee-medium__liquid"></div>
+      <div class="coffee-medium__smoke coffee-medium__smoke-one"></div>
+      <div class="coffee-medium__smoke coffee-medium__smoke-two"></div>
+      <div class="coffee-medium__smoke coffee-medium__smoke-three"></div>
+      <div class="coffee-medium__smoke coffee-medium__smoke-for"></div>
+      <div class="coffee-medium__cup"></div>
+    </div>
+    <div class="coffee-footer"></div>
+  </div>
+ --}}
+
+
+
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-sm-12">
+           <img class="worldPics" src="/images/pink-bedspread-inside-room-2351290.jpg">
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <img  class="worldPics" src="/images/turned-on-macbook-pro-on-brown-table-1580329.jpg">
+        </div>
+        <div class="col-md-3 col-sm-12">
+             <img class="worldPics" src="/images/man-wearing-gray-blazer-838413 (1).jpg">
+        </div>
+        <div class="col-md-3 col-sm-12">
+            <img  class="worldPics" src="/images/wrapped-toilet-paper-on-top-of-a-toilet-3944410.jpg">
+        </div>
+    </div>
+</div>
+
     <!-- Login/Signup Modal -->
     <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
@@ -196,18 +243,50 @@
         <div class="row welcome text-center">
             <div class="col-12">
                 <h1 class="display-4">LET LEARNING BE SIMPLE</h1>
-                <p>No more traveling to each others homes, libraries, or schools to conduct tutoring sessions.</p>
-                <p>Organize tutoring environments to fit your schedule</p>
-                <p>Learning should be fast, simple and easy.</p>
+                <h1 class="espresso-1">Wait wait...</h1>
+                <h1 class="espresso-2">Quick expreso break</h1>
+                <p class="bulletPoints">No more traveling to each others homes, libraries, or schools to conduct tutoring sessions.</p>
+                <p class="bulletPoints">Organize tutoring environments to fit your schedule</p>
+                <p class="bulletPoints">Learning should be fast, simple and easy.</p>
+
+                <div class="col-12 espresso">
+
+    <div class="coffee-header">
+      <div class="coffee-header__buttons coffee-header__button-one"></div>
+      <div class="coffee-header__buttons coffee-header__button-two"></div>
+      <div class="coffee-header__display"></div>
+      <div class="coffee-header__details"></div>
+    </div>
+    <div class="coffee-medium">
+      <div class="coffe-medium__exit"></div>
+      <div class="coffee-medium__arm"></div>
+      <div class="coffee-medium__liquid"></div>
+      <div class="coffee-medium__smoke coffee-medium__smoke-one"></div>
+      <div class="coffee-medium__smoke coffee-medium__smoke-two"></div>
+      <div class="coffee-medium__smoke coffee-medium__smoke-three"></div>
+      <div class="coffee-medium__smoke coffee-medium__smoke-for"></div>
+      <div class="coffee-medium__cup"></div>
+    </div>
+    <div class="coffee-footer"></div>
 
 
-            </div>
+
+        </div>
+
+
+        
+  </div>
+           
+
+
+
+           
         </div>
 
     </div>
     <!-- Profiles -->
 
-    <div class="container-fluid padding" id="contact">
+    <div class="container-fluid padding profiles" id="contact">
 
         <h1 class="ml11 text-center">
             <span class="text-wrapper">
@@ -329,7 +408,39 @@
         </script>
 
         <script>
+
+
             // Wrap every letter in a span
+
+            $(".espresso").hide();
+            $(".espresso-1").hide();
+            $(".espresso-2").hide();
+
+            setTimeout(function() {
+            $(".bulletPoints").fadeOut("fast");
+            $(".display-4").fadeOut("fast");
+            $(".espresso-1").show();
+            }, 8000);
+
+             setTimeout(function() {
+            $(".espresso-2").show();
+            }, 10000);
+
+            setTimeout(function() {
+             $(".espresso").show();
+            }, 11500);
+
+             setTimeout(function() {
+            $(".espresso-1").hide();
+            $(".espresso-2").hide();
+             $(".espresso").hide();
+              $(".bulletPoints").fadeIn("fast");
+            $(".display-4").fadeIn("fast");
+            }, 19785);
+
+
+           
+               
             var textWrapper = document.querySelector('.ml11 .letters');
             textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
 
@@ -415,6 +526,7 @@
                     delay: 500
                 });
         </script>
+
         <script src="/js/index.js"></script>
         <script type="text/javascript" src="js/login.js"></script>
         <script type="text/javascript" src="js/signup.js"></script>
