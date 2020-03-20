@@ -20,4 +20,22 @@ $(document).ready(function () {
         }
       });
   });
+
+
+  $(".delete-class").on("click", function () {
+    let classid = $(this).data("class-id");
+    console.log("classId to delete from S", classid)
+
+    $.ajax("/api/removeclass/" + classid, {
+        method: "DELETE",
+        // data: { classid: classid }
+      })
+      .then(response => {
+        console.log("response!", response);
+        if (response === "OK") {
+          $(".delete-class").removeData("class-id");
+          window.location.href = "/students/enrolled";
+        }
+      });
+  });
 });

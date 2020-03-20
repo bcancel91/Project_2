@@ -153,15 +153,13 @@
                             data-class-id={{id}} data-backdrop="static" data-keyboard="false">
                             View Class
                         </button>
-
-                        <form action="/api/removeclass/{{id}}" method="get">
-                            <input type="submit" value="X" class="btn btn-danger">
-                        </form>
                         {{!-- add a modal here to doublecheck user's click on delete button --}}
                     </div>
                 </div>
                 {{!-- <a href="#" class="btn btn-primary">New class</a> --}}
                 {{/each}}
+                {{!-- {{else}} --}}
+                {{!-- No classes available --}}
             </div>
         </div>
 
@@ -203,64 +201,94 @@
                             </div>
                             {{/each}}
                         </div>
-
                         {{!-- add a modal here to doublecheck user's click on delete button --}}
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary add-class-btn">Add this class</button>
-                            <a href="mailto:{{instructEmail}}" class="btn btn-danger">Email instructor</a>
+                            {{#if my}}
+                            <button type="button" class="btn btn-danger delete-class" data-toggle="modal"
+                                data-target="#deleteClass" data-backdrop="static" data-keyboard="false">Remove</button>
+                            {{!-- Delete class modal: are you sure you want to delete? --}}
+                            {{!-- <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog"
+                aria-labelledby="myLargeModalLabel" aria-hidden="true" id="deleteClass">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
 
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                id="details-close-btn">Close</button>
-                            {{!-- <button type="submit" form="l" class="btn btn-default">Login</button> --}}
+                        <div class="modal-header">
+                            <h5 class="modal-title">Are you sure??</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                id="delete-x-btn">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-
+                        <div class="modal-body">
+                            <p>Are you sure you want to remove this class?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                id="delete-close-btn">Nah, I'll
+                                keep it</button>
+                            <button type="button" class="btn btn-danger delete-class">Delete</button>
+                        </div>
+                    </div>
+                </div> --}}
+                        {{!-- </div> --}}
+                        {{!-- <form class="delete-class" data-class-id={{id}} data-target="#classDetails" action="/api/removeclass/{{id}}" method="DELETE">
+                                <input type="submit" value="Delete Class" class="btn btn-danger">
+                            </form> --}}
+                        {{else}}
+                        <button type="button" class="btn btn-secondary add-class-btn">Add this class</button>
+                        {{/if}}
+                        <a href="mailto:{{instructEmail}}" class="btn btn-danger">Email instructor</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            id="details-close-btn">Close</button>
+                        {{!-- <button type="submit" form="l" class="btn btn-default">Login</button> --}}
                     </div>
 
                 </div>
+
             </div>
         </div>
+    </div>
 
-        {{!-- footer --}}
+    {{!-- footer --}}
 
-        <footer>
-            <div class="container-fluid padding">
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <h4>Resources</h4>
-                        <hr class="light">
-                        <a href="https://www.github.com/" target="_blank"><i class="fab fa-github fa-3x"></i></a>
-                        <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube fa-3x"></i></a>
-                        <a href="https://stackoverflow.com" target="_blank"><i
-                                class="fab fa-stack-overflow fa-3x"></i></a>
-                        <a href="https://getbootstrap.com" target="_blank"><i class="fab fa-bootstrap fa-3x"></i></a>
-                        <a href="https://www.google.com/" target="_blank"><i class="fab fa-google fa-3x"></i></a>
-                        <!-- neet to rplace with w3schools or delete 
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <h4>Resources</h4>
+                    <hr class="light">
+                    <a href="https://www.github.com/" target="_blank"><i class="fab fa-github fa-3x"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube fa-3x"></i></a>
+                    <a href="https://stackoverflow.com" target="_blank"><i class="fab fa-stack-overflow fa-3x"></i></a>
+                    <a href="https://getbootstrap.com" target="_blank"><i class="fab fa-bootstrap fa-3x"></i></a>
+                    <a href="https://www.google.com/" target="_blank"><i class="fab fa-google fa-3x"></i></a>
+                    <!-- neet to rplace with w3schools or delete 
                                         <i class="fab fa-github fa-3x"></i> -->
 
-                    </div>
-                    <div class="col-md-4">
-                        <h4>Location</h4>
-                        <hr class="light">
-                        <p>Full-stack Flex Bootcamp</p>
-                        <p>Georgia, Tech</p>
-                        <p>Atlanta, GA</p>
-                        <p>30308</p>
-                    </div>
-                    <div class="col-md-4">
-                        <h4>Support</h4>
-                        <hr class="light">
-                        <p>tutorme.supoort@goodquestion.org</p>
-                    </div>
-                    <div class="col-12">
-                        <hr class="light">
-                        <h4>&copy; tutorme.com</h4>
-                    </div>
                 </div>
-
+                <div class="col-md-4">
+                    <h4>Location</h4>
+                    <hr class="light">
+                    <p>Full-stack Flex Bootcamp</p>
+                    <p>Georgia, Tech</p>
+                    <p>Atlanta, GA</p>
+                    <p>30308</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Support</h4>
+                    <hr class="light">
+                    <p>tutorme.supoort@goodquestion.org</p>
+                </div>
+                <div class="col-12">
+                    <hr class="light">
+                    <h4>&copy; tutorme.com</h4>
+                </div>
             </div>
-        </footer>
 
-    </div>
+        </div>
+    </footer>
+
+</div>
 
 
 </div>
@@ -293,9 +321,11 @@
             $(`#class-${classid}`).show();
 
             $(".add-class-btn").data("class-id", classid);
+            $(".delete-class").data("class-id", classid);
 
             $("#details-close-btn").on("click", function () {
                 $(".add-class-btn").removeData("class-id");
+                $(".delete-class").removeData("class-id", classid);
                 $(`#class-${classid}`).hide();
             });
 
