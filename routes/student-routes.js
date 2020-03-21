@@ -75,7 +75,7 @@ module.exports = function (app) {
             })
         })
 
-    })
+    });
 
     app.delete("/api/removeclass/:id", isStudent, (req, res) => {
         console.log("delete id", req.params.id)
