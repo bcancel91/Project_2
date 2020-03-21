@@ -60,6 +60,11 @@ module.exports = function (sequelize, DataTypes) {
         //     foreignKey: "classId",
         // });
         // Class.hasMany(models.Student)
+        Class.hasMany(models.UserClass, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
     };
     return Class;
 };
