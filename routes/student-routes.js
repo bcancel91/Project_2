@@ -59,23 +59,23 @@ module.exports = function (app) {
     //     })
     // })
 
-    app.get("/students/enrolled", isStudent, (req, res) => {
-        db.UserClass.findAll({
-            where: {
-                UserId: req.user.id,
-            },
-            include: [db.Class],
-        }).then(classArr => {
-            //   console.log(classArr.map(c => c.dataValues.Class.dataValues))
+    // app.get("/students/enrolled", isStudent, (req, res) => {
+    //     db.UserClass.findAll({
+    //         where: {
+    //             UserId: req.user.id,
+    //         },
+    //         include: [db.Class],
+    //     }).then(classArr => {
+    //         //   console.log(classArr.map(c => c.dataValues.Class.dataValues))
 
-            res.render("students", {
-                my: true,
-                all: false,
-                classes: classArr.map(c => c.dataValues.Class.dataValues)
-            })
-        })
+    //         res.render("students", {
+    //             my: true,
+    //             all: false,
+    //             classes: classArr.map(c => c.dataValues.Class.dataValues)
+    //         })
+    //     })
 
-    });
+    // });
 
     app.delete("/api/removeclass/:id", isStudent, (req, res) => {
         console.log("delete id", req.params.id)

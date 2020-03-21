@@ -83,19 +83,20 @@ module.exports = function (app) {
       } else {
         Model = db.Student;
       }
-      // if (req.user.instructor) {
+
       Model.findOne({
         where: {
           UserId: req.user.id
         }
       })
         .then(data => {
-          // console.log(data);
+
           let name = data.dataValues.name;
           res.json({
             name: (name).substr(0, name.indexOf(",")),
             email: req.user.email,
-            id: req.user.id
+            id: req.user.id,
+            instructor: req.user.instructor
           });
 
         });
