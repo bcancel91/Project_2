@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-<!-- Sidebar Filters -->
+    <!-- Sidebar Filters -->
     <nav id="sidebar">
         <div id="dismiss">
             <i class="fas fa-arrow-left"></i>
@@ -17,10 +17,10 @@
                     class="dropdown-toggle">Classes:</a>
                 <ul class="collapse list-unstyled" id="classesSubmenu">
                     <li>
-                        <a href="#">My Classes</a>
+                        <a onclick="setSelected(this);" data-setting="my" href="javascript:void(0);">My Classes</a>
                     </li>
                     <li>
-                        <a href="#">All Classes</a>
+                        <a onclick="setSelected(this);" data-setting="all" href="javascript:void(0);">All Classes</a>
                     </li>
                 </ul>
             </li>
@@ -29,13 +29,16 @@
                     class="dropdown-toggle">Duration:</a>
                 <ul class="collapse list-unstyled" id="durationSubmenu">
                     <li>
-                        <a href="#">Less than 30 min</a>
+                        <a onclick="setSelected(this);" href="javascript:void(0);" data-setting="d1">Less than 30
+                            min</a>
                     </li>
                     <li>
-                        <a href="#">Less than 60 min</a>
+                        <a onclick="setSelected(this);" data-setting="d2" href="javascript:void(0);">Less than 60
+                            min</a>
                     </li>
                     <li>
-                        <a href="#">Over 60 min </a>
+                        <a onclick="setSelected(this);" data-setting="d3" href="javascript:void(0);">Over 60 min
+                        </a>
                     </li>
                 </ul>
             </li>
@@ -43,13 +46,15 @@
                 <a href="#priceSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Price:</a>
                 <ul class="collapse list-unstyled" id="priceSubmenu">
                     <li>
-                        <a href="#">FREE</a>
+                        <a onclick="setSelected(this);" data-setting="free" href="javascript:void(0);">FREE</a>
                     </li>
                     <li>
-                        <a href="#">Less than $25</a>
+                        <a onclick="setSelected(this);" data-setting="p2" href="javascript:void(0);">Less than
+                            $25</a>
                     </li>
                     <li>
-                        <a href="#">Less than $50</a>
+                        <a onclick="setSelected(this);" data-setting="p3" href="javascript:void(0);">Less than
+                            $50</a>
                     </li>
                 </ul>
             </li>
@@ -58,13 +63,14 @@
                     class="dropdown-toggle">Instructors:</a>
                 <ul class="collapse list-unstyled" id="instructorsSubmenu">
                     <li>
-                        <a href="#">James</a>
+                        <a onclick="setSelected(this);" data-setting="Instructor" data-id="1"
+                            href="javascript:void(0);">James</a>
                     </li>
                     <li>
-                        <a href="#">Peter</a>
+                        <a onclick="setSelected(this);" data-setting="Instructor" href="javascript:void(0);">Peter</a>
                     </li>
                     <li>
-                        <a href="#">Jack</a>
+                        <a onclick="setSelected(this);" data-setting="Instructor" href="javascript:void(0);">Jack</a>
                     </li>
                 </ul>
             </li>
@@ -72,17 +78,17 @@
 
         <ul class="list-unstyled CTAs">
             <li>
-                <a href="" class="settings">Apply Settings</a>
+                <a class="settings" onclick="applySettings();" href="javascript:void(0);">Apply Settings</a>
             </li>
             <li>
-                <a href="" class="clear">Clear Settings</a>
+                <a href="/instructors" class="clear">Clear Settings</a>
             </li>
         </ul>
 
     </nav>
 
-<!-- Page Content -->
-<!-- Navbar -->
+    <!-- Page Content -->
+    <!-- Navbar -->
     <div class="container-fluid" id="content">
 
         <nav class="navbar navbar-expand-md navbar-light bg-light ">
@@ -104,7 +110,7 @@
             </div>
         </nav>
 
-{{!-- Instructor options panel --}}
+        {{!-- Instructor options panel --}}
         <div class="classes-view">
             <div class="classes-header">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -118,12 +124,12 @@
 
                             <button type="button" class="btn btn-secondary login-modal-btn" data-toggle="modal"
                                 data-target="#add-class">New class</button>
-                       </nav>
+                        </nav>
                     </div>
                 </nav>
             </div>
 
-{{!-- All Classes --}}
+            {{!-- All Classes --}}
             <div class="container classes-view">
                 {{#each classes}}
                 <div class="card">
@@ -162,7 +168,7 @@
             <div class="overlay"></div>
 
 
-<!-- Add New Class Modal -->
+            <!-- Add New Class Modal -->
             <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog"
                 aria-labelledby="myLargeModalLabel" aria-hidden="true" id="add-class">
                 <div class="modal-dialog modal-lg">
@@ -185,8 +191,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <input type="text" style="height: 80% !important;" required="required" rows="10" cols="10" class="form-control"
-                                            id="description-input" placeholder="Notes about your offer">
+                                        <input type="text" style="height: 80% !important;" required="required" rows="10"
+                                            cols="10" class="form-control" id="description-input"
+                                            placeholder="Notes about your offer">
                                     </div>
                                     <!-- Date and time input -->
                                     <div class="form-group">
@@ -226,7 +233,7 @@
                 </div>
             </div>
 
-{{!-- View Class Details Modal --}}
+            {{!-- View Class Details Modal --}}
             <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog"
                 aria-labelledby="myLargeModalLabel" aria-hidden="true" id="classDetails">
                 <div class="modal-dialog modal-lg">
@@ -277,7 +284,7 @@
                 </div>
             </div>
 
-{{!-- Edit Class Modal --}}
+            {{!-- Edit Class Modal --}}
             <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog"
                 aria-labelledby="myLargeModalLabel" aria-hidden="true" id="editClass">
                 <div class="modal-dialog modal-lg">
@@ -306,8 +313,8 @@
                                     {{!-- Description edit --}}
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <input style="height: 40%;" type="text" required="required" rows="10" cols="10" class="form-control"
-                                            id="description-edit-{{id}}" value={{description}}>
+                                        <input style="height: 40%;" type="text" required="required" rows="10" cols="10"
+                                            class="form-control" id="description-edit-{{id}}" value={{description}}>
                                     </div>
                                     <!-- Date and time edit -->
                                     <div class="form-group">
@@ -331,8 +338,8 @@
                                     {{!-- Price edit --}}
                                     <div class="form-group">
                                         <label for="price">Price: $</label>
-                                        <input type="number" min="0" max="10000" required="required" class="form-control"
-                                            id="price-edit-{{id}}" value={{price}}>
+                                        <input type="number" min="0" max="10000" required="required"
+                                            class="form-control" id="price-edit-{{id}}" value={{price}}>
                                     </div>
                                 </form>
                             </div>
@@ -349,7 +356,7 @@
                 </div>
             </div>
 
-{{!-- Delete class modal: are you sure you want to delete? --}}
+            {{!-- Delete class modal: are you sure you want to delete? --}}
             <div class="modal fade bd-example-modal-lg-1" tabindex="-1" role="dialog"
                 aria-labelledby="myLargeModalLabel" aria-hidden="true" id="deleteClass">
                 <div class="modal-dialog modal-lg">
@@ -379,7 +386,7 @@
                 </div>
             </div>
 
-<!-- footer -->
+            <!-- footer -->
             <footer>
                 <div class="container-fluid padding">
                     <div class="row text-center">
@@ -511,5 +518,6 @@
         });
     });
 </script>
-<script type="text/javascript" src="js/class.js"></script>
-<script type="text/javascript" src="js/instructor.js"></script>
+<script type="text/javascript" src="/js/class.js"></script>
+<script type="text/javascript" src="/js/instructor.js"></script>
+<script type="text/javascript" src="/js/filter.js"></script>
