@@ -9,8 +9,8 @@ $(document).ready(function () {
     let classid = $(this).data("class-id");
     console.log("before $.post", classid);
     $.post("/api/students/add", {
-        id: classid
-      })
+      id: classid
+    })
       .then(response => {
         // console.log(response);
         if (response === "OK") {
@@ -27,9 +27,9 @@ $(document).ready(function () {
     console.log("classId to delete from S", classid)
 
     $.ajax("/api/removeclass/" + classid, {
-        method: "DELETE",
-        // data: { classid: classid }
-      })
+      method: "DELETE",
+      // data: { classid: classid }
+    })
       .then(response => {
         console.log("response!", response);
         if (response === "OK") {
