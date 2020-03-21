@@ -1,8 +1,10 @@
 $(document).ready(function () {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
+
+
   $.get("/api/user_data").then(data => {
-    $(".student-name").text(data.email);
+    $(".student-name").text(data.name);
   });
 
   $(".add-class-btn").on("click", function () {
@@ -16,7 +18,7 @@ $(document).ready(function () {
         if (response === "OK") {
           $(".add-class-btn").removeData("class-id");
           $(`#class-${classid}`).hide();
-          window.location.href = "/students/enrolled";
+          window.location.href = "/students/";
         }
       });
   });
@@ -34,7 +36,7 @@ $(document).ready(function () {
         console.log("response!", response);
         if (response === "OK") {
           $(".delete-class").removeData("class-id");
-          window.location.href = "/students/enrolled";
+          window.location.href = "/students/";
         }
       });
   });
