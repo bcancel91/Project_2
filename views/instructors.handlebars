@@ -11,7 +11,11 @@
         </div>
 
         <ul class="list-unstyled components">
+
+            {{!-- Filter options --}}
+
             <h4 class="filter-header">Filter Options:</h4>
+
             <li>
                 <a href="#classesSubmenu" data-toggle="collapse" aria-expanded="false"
                     class="dropdown-toggle">Classes:</a>
@@ -116,6 +120,15 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
                         <h2>All Classes</h2>
+
+       {{!-- Search Bar --}}
+
+                        <form action="/api/instructors/search" class="search-form">
+                            <i class="fas fa-search"></i>
+                            <input type="search" name="term">
+                            <input type="submit" value="Search">
+                        </form>
+
                         <nav>
                             <button type="button" id="sidebarCollapse" class="btn btn-info">
                                 <i class="fas fa-align-left"></i>
@@ -141,7 +154,7 @@
                             {{!-- the line below will be visible only for getting all classes from all instructors --}}
                             {{!-- maybe link instructor name to instructor's profile page --}}
                             <li class="list-group-item">
-                                <h5 class="card-title">Instructor: {{InstructorId}}</h5>
+                                <h5 class="card-title">Instructor: {{Instructor.name}}</h5>
                             </li>
                             <li class="list-group-item">Date and Time: {{datetime}}</li>
                             <li class="list-group-item">Duration: {{duration}} minutes</li>

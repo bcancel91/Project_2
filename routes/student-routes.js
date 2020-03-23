@@ -1,7 +1,10 @@
 // This file offers a set of routes for displaying and saving classes data to the db
+
 const isStudent = require('../config/middleware/isStudent')
-// Requiring our models
 const db = require("../models");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
+
 
 module.exports = function (app) {
 
@@ -89,5 +92,50 @@ module.exports = function (app) {
         })
     });
 
+    // Search for classes
 
-}
+    app.get("/api/students/search", isStudent, (req, res) => {
+        let {
+            term
+        } = req.query;
+        term = term.toLowerCase();
+
+        db.Class.findAll({
+                where: {
+                    topic: {
+                        [Op.like]: "%" + term + "%"
+                    }
+                }
+            })
+            .then(classes => {
+                console.log(classes)
+                res.render("students", {
+                    classes: classes.map(c => c.dataValues)
+                })
+            })
+            .catch(err => console.log(err));
+    });
+};
+
+
+// Pardon my notes I'll clean this up soon!
+
+// raw: true works same as:
+// res.render("students", {
+//     classes: classes.map(c => c.dataValues)
+// })
+
+// Example:
+// var demo = {
+//     clas: "Whatever",
+//     assn: {
+//         name: "quiz",
+//         score: 100
+//     }
+// }
+// raw: true
+// var demo1 = {
+//     class: "Whatever",
+//     "assn.name": "quiz",
+//     "assn.score": 100
+// }
