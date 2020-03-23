@@ -10,6 +10,9 @@
         </div>
 
         <ul class="list-unstyled components">
+
+            {{!-- Filter opitions --}}
+
             <h4 class="filter-header">Filter Options:</h4>
             <li>
                 <a href="#classesSubmenu" data-toggle="collapse" aria-expanded="false"
@@ -121,6 +124,14 @@
                     <div class="container-fluid">
                         <h2>All Classes</h2>
 
+                        {{!-- SEARCH BAR --}}
+
+                        <form action="/api/students/search" class="search-form">
+                            <i class="fas fa-search"></i>
+                            <input type="search" name="term">
+                            <input type="submit" value="Search">
+                        </form>
+
                         <nav>
                             <button type="button" id="sidebarCollapse" class="btn btn-info">
                                 <i class="fas fa-align-left"></i>
@@ -148,7 +159,7 @@
                             {{!-- the line below will be visible only for getting all classes from all instructors --}}
                             {{!-- maybe link instructor name to instructor's profile page --}}
                             <li class="list-group-item">
-                                <h5 class="card-title">Instructor: {{InstructorId}}</h5>
+                                <h5 class="card-title">Instructor: {{Instructor.name}}</h5>
                             </li>
                             <li class="list-group-item">Date and Time: {{datetime}}</li>
                             <li class="list-group-item">Duration: {{duration}} minutes</li>
@@ -156,7 +167,8 @@
                             <li class="list-group-item">Price: ${{price}}</li>
                         </ul>
                         <button class="btn btn-primary view-class" data-toggle="modal" data-target="#classDetails"
-                            data-class-id={{id}} data-backdrop="static" data-keyboard="false">
+                            data-class-id={{id}} data-instructor-email={{Instructor.email}} data-backdrop="static"
+                            data-keyboard="false">
                             View Class
                         </button>
                         {{!-- add a modal here to doublecheck user's click on delete button --}}
@@ -195,7 +207,7 @@
                                         {{!-- the line below will be visible only for getting all classes from all instructors --}}
                                         {{!-- maybe link instructor name to instructor's profile page --}}
                                         <li class="list-group-item">
-                                            <h5 class="card-title">Instructor: {{InstructorId}}</h5>
+                                            <h5 class="card-title">Instructor: {{Instructor.name}}</h5>
                                         </li>
                                         <li class="list-group-item">Date and Time: {{datetime}}</li>
                                         <li class="list-group-item">Class Duration: {{duration}} minutes</li>
@@ -216,7 +228,7 @@
                             {{else}}
                             <button type="button" class="btn btn-secondary add-class-btn">Add this class</button>
                             {{/if}}
-                            <a href="mailto:{{instructEmail}}" class="btn btn-danger">Email instructor</a>
+                            <a id="emailBtn" href="#" class="btn btn-danger">Email instructor</a>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal"
                                 id="details-close-btn">Close</button>
                             {{!-- <button type="submit" form="l" class="btn btn-default">Login</button> --}}
@@ -297,9 +309,11 @@
 
         $(".view-class").on("click", function () {
             let classid = $(this).data("class-id");
+            let instrucEmail = $(this).data("instructor-email")
             console.log(`#class-${classid}`);
             $(`#class-${classid}`).show();
 
+            $("#emailBtn").attr("href", "mailto:" + instrucEmail)
             $(".add-class-btn").data("class-id", classid);
             $(".delete-class").data("class-id", classid);
 

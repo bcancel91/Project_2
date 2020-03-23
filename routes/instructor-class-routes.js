@@ -2,6 +2,8 @@
 const isInstructor = require('../config/middleware/isInstructor')
 // Requiring our models
 const db = require("../models");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 module.exports = function (app) {
 
@@ -58,5 +60,16 @@ module.exports = function (app) {
         }).then(() => {
             res.sendStatus(200);
         });
+    });
+
+    app.get("/api/instructors/search", isInstructor, (req, res) => {
+        let { term } = req.query;
+        term = term.toLowerCase();
+
+        db.Class.findAll({ where: {topic : {[Op.like] : "%" + term + "%"}}})
+        .then(classes => res.render ("instructors",{
+            classes: classes.map(c => c.dataValues)
+        }))
+        .catch(err => console.log(err));
     });
 }

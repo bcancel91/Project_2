@@ -5,17 +5,25 @@ const insClassFilter = require("../lib/instructorFilter");
 const stuClassFilter = require("../lib/studentFilter");
 let isInstructor = require("../config/middleware/isInstructor");
 let isStudent = require("../config/middleware/isStudent");
+const moment = require('moment')
 
 module.exports = function (app) {
 
   app.get("/instructors", isInstructor, (req, res) => {
 
-    db.Class.findAll({}).then(function (dbClass) {
+    db.Class.findAll({
+      include: [db.Instructor]
+    }).then(function (dbClass) {
 
       dbClassValues = dbClass.map(classObj => {
-        return classObj.dataValues;
+        return {
+          ...classObj.dataValues,
+          datetime: moment(classObj.dataValues.datetime).format("M/D/YYYY h:mm a"),
+          Instructor: classObj.dataValues.Instructor.dataValues
+        };
       });
 
+      console.log(dbClassValues)
       let hbsObject = {
         classes: dbClassValues
       };
@@ -26,11 +34,20 @@ module.exports = function (app) {
 
   app.get("/students", isStudent, (req, res) => {
 
-    db.Class.findAll({}).then(function (dbClass) {
+    db.Class.findAll({
+      include: [db.Instructor]
+    }).then(function (dbClass) {
 
       dbClassValues = dbClass.map(classObj => {
-        return classObj.dataValues;
+        return {
+          ...classObj.dataValues,
+          datetime: moment(classObj.dataValues.datetime).format("M/D/YYYY h:mm a"),
+          Instructor: classObj.dataValues.Instructor.dataValues
+        }
       });
+
+      console.log(dbClassValues)
+      console
 
       let hbsObject = {
         my: false,
@@ -49,7 +66,9 @@ module.exports = function (app) {
     console.log(filterSettings);
 
     insClassFilter(req.user.id, filterSettings).then(dbClassValues => {
-      res.render("instructors", { classes: dbClassValues });
+      res.render("instructors", {
+        classes: dbClassValues
+      });
     })
 
   });
@@ -63,9 +82,15 @@ module.exports = function (app) {
     stuClassFilter(req.user.id, filterSettings).then(dbClassValues => {
 
       if (filterSettings.classes === "my") {
-        res.render("students", { classes: dbClassValues, my: true, all: false })
+        res.render("students", {
+          classes: dbClassValues,
+          my: true,
+          all: false
+        })
       } else {
-        res.render("students", { classes: dbClassValues });
+        res.render("students", {
+          classes: dbClassValues
+        });
       }
     })
 
