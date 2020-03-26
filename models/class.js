@@ -54,16 +54,11 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         });
-        // Class.belongsToMany(models.Student,{
-        //     through: "UserClass",
-        //     as: "class",
-        //     foreignKey: "classId",
-        // });
-        // Class.hasMany(models.Student)
         Class.hasMany(models.UserClass, {
             foreignKey: {
                 allowNull: false
-            }
+            },
+            onDelete: "cascade"
         });
     };
     return Class;

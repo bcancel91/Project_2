@@ -62,7 +62,8 @@ $(document).ready(function () {
   }
 
   function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
+    console.log(err)
+    $("#alert .msg").text(err.responseJSON.errors[0].message); // { msg: 'messge' }.toString() ==> [object Object]
     $("#alert").fadeIn(500);
   }
 });
