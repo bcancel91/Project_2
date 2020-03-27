@@ -42,11 +42,11 @@ $(document).ready(function () {
   // Otherwise we log any errors
   function signUpUser(name, email, password, instructor) {
     $.post("/api/signup", {
-      name: name,
-      email: email,
-      password: password,
-      instructor: instructor
-    })
+        name: name,
+        email: email,
+        password: password,
+        instructor: instructor
+      })
       .then(data => {
         console.log(data);
 

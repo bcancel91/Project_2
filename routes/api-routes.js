@@ -24,16 +24,16 @@ module.exports = function (app) {
     if (req.body.instructor === "true") {
       // if instructor create instructor
       db.Instructor.create({
-        email: req.body.email,
-        name: req.body.name,
-        User: {
           email: req.body.email,
-          password: req.body.password,
-          instructor: req.body.instructor
-        }
-      }, {
-        include: [db.User]
-      })
+          name: req.body.name,
+          User: {
+            email: req.body.email,
+            password: req.body.password,
+            instructor: req.body.instructor
+          }
+        }, {
+          include: [db.User]
+        })
         .then(function () {
           res.redirect(307, "/api/login");
         })
@@ -44,16 +44,16 @@ module.exports = function (app) {
 
     } else {
       db.Student.create({
-        email: req.body.email,
-        name: req.body.name,
-        User: {
           email: req.body.email,
-          password: req.body.password,
-          instructor: req.body.instructor
-        }
-      }, {
-        include: [db.User]
-      })
+          name: req.body.name,
+          User: {
+            email: req.body.email,
+            password: req.body.password,
+            instructor: req.body.instructor
+          }
+        }, {
+          include: [db.User]
+        })
         .then(function () {
           res.redirect(307, "/api/login");
         })
@@ -83,12 +83,11 @@ module.exports = function (app) {
       } else {
         Model = db.Student;
       }
-
       Model.findOne({
-        where: {
-          UserId: req.user.id
-        }
-      })
+          where: {
+            UserId: req.user.id
+          }
+        })
         .then(data => {
 
           let name = data.dataValues.name;
@@ -98,9 +97,7 @@ module.exports = function (app) {
             id: req.user.id,
             instructor: req.user.instructor
           });
-
         });
-    }
-
+    };
   });
 };
