@@ -62,8 +62,13 @@ $(document).ready(function () {
   }
 
   function handleLoginErr(err) {
+    let msg = err.responseJSON.errors[0].message;
+    console.log(msg)
+    if (msg = "users.Users_email_unique must be unique") {
+      msg = "Email already taken."
+    }
     console.log(err)
-    $("#alert .msg").text(err.responseJSON.errors[0].message); // { msg: 'messge' }.toString() ==> [object Object]
+    $("#alert .msg").text(msg); // { msg: 'messge' }.toString() ==> [object Object]
     $("#alert").fadeIn(500);
   }
 });

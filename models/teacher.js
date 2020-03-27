@@ -3,17 +3,25 @@ module.exports = function (sequelize, DataTypes) {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-
-            }
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
+            unique: 
+            {
+              args: true,
+              msg: "Email already taken!"
+            },
+            allowNull: {
+              args: false,
+              msg: "Please enter valid email."
+            },
             validate: {
-
+              isEmail: {
+                args: true,
+                msg: "Please enter valid email."
+              }
             }
-        }
+          },
     });
 
     Instructor.associate = function (models) {

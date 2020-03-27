@@ -6,17 +6,19 @@ module.exports = function (sequelize, DataTypes) {
     // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
-      unique: {
-        msg: 'Email already taken!'
+      unique: 
+      {
+        args: true,
+        msg: "Email already taken!"
       },
       allowNull: {
         args: false,
-        msg: "Please enter valid email"
+        msg: "Please enter valid email."
       },
       validate: {
         isEmail: {
           args: true,
-          msg: "Please enter valid email!"
+          msg: "Please enter valid email."
         }
       }
     },
