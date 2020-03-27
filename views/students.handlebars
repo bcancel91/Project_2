@@ -122,7 +122,7 @@
             <div class="classes-header">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
-                        <h2>All Classes</h2>
+                        <h2></h2>
 
                         {{!-- SEARCH BAR --}}
 
@@ -150,11 +150,13 @@
 
                 {{#each classes}}
 
-                <div class="card">
+                <div class="card m-5">
                     <h5 class="card-header">{{topic}}</h5>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <p class="card-text">What you'll learn: {{description}}</p>
+                            <p class="card-text">What you'll learn:
+                                <br>
+                                {{description}}</p>
                             <br>
                             {{!-- the line below will be visible only for getting all classes from all instructors --}}
                             {{!-- maybe link instructor name to instructor's profile page --}}
@@ -171,13 +173,11 @@
                             data-keyboard="false">
                             View Class
                         </button>
-                        {{!-- add a modal here to doublecheck user's click on delete button --}}
                     </div>
                 </div>
-                {{!-- <a href="#" class="btn btn-primary">New class</a> --}}
+                {{else}}
+                <p>No classes available at the moment.</p>
                 {{/each}}
-                {{!-- {{else}} --}}
-                {{!-- No classes available --}}
             </div>
         </div>
 
@@ -202,7 +202,9 @@
                                 <h5 class="card-header">{{topic}}</h5>
                                 <div class="card-body">
                                     <ul class="list-group list-group-flush">
-                                        <p class="card-text">What you'll learn: {{description}}</p>
+                                        <p class="card-text">What you'll learn:
+                                            <br>
+                                            {{description}}</p>
                                         <br>
                                         {{!-- the line below will be visible only for getting all classes from all instructors --}}
                                         {{!-- maybe link instructor name to instructor's profile page --}}
@@ -212,9 +214,8 @@
                                         <li class="list-group-item">Date and Time: {{datetime}}</li>
                                         <li class="list-group-item">Class Duration: {{duration}} minutes</li>
                                         <li class="list-group-item">Class Capacity: {{capacity}} people</li>
-                                        <li class="list-group-item">Price: {{price}}</li>
+                                        <li class="list-group-item">Price: $ {{price}}</li>
                                     </ul>
-
                                 </div>
                             </div>
                             {{/each}}

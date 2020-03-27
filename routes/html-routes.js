@@ -12,7 +12,7 @@ module.exports = function (app) {
   app.get("/instructors", isInstructor, (req, res) => {
 
     db.Class.findAll({
-      include: [db.Instructor]
+      include: [db.Instructor],
     }).then(function (dbClass) {
 
       dbClassValues = dbClass.map(classObj => {
