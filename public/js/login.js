@@ -40,6 +40,8 @@ $(document).ready(function () {
       })
       .catch(err => {
         console.log(err);
+        $("#alert1 .msg").text("Your username or password is incorrect."); // { msg: 'messge' }.toString() ==> [object Object]
+        $("#alert1").fadeIn(500);
       });
   }
 });
