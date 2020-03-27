@@ -192,6 +192,8 @@ color: white;
 
 
 
+/* Espresso machine */
+
 .espresso{
   width: 300px;
   height: 280px;
@@ -450,6 +452,9 @@ color: white;
   background-color: #000;
 }
 
+
+
+/* GIPHY */
 .giphy-embed {
   border: solid black 15px;
 
