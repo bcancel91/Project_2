@@ -36,11 +36,10 @@ $(document).ready(function () {
         } else {
           window.location.replace("/students");
         }
-        // If there's an error, log the error
       })
       .catch(err => {
         console.log(err);
-        $("#alert1 .msg").text("Your username or password is incorrect."); // { msg: 'messge' }.toString() ==> [object Object]
+        $("#alert1 .msg").text("Your username or password is incorrect."); 
         $("#alert1").fadeIn(500);
       });
   }

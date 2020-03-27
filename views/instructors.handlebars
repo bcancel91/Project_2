@@ -121,7 +121,7 @@
                     <div class="container-fluid">
                         <h2>All Classes</h2>
 
-       {{!-- Search Bar --}}
+                        {{!-- Search Bar --}}
 
                         <form action="/api/instructors/search" class="search-form">
                             <i class="fas fa-search"></i>
@@ -151,8 +151,7 @@
                         <ul class="list-group list-group-flush">
                             <p class="card-text">What you'll learn: {{description}}</p>
                             <br>
-                            {{!-- the line below will be visible only for getting all classes from all instructors --}}
-                            {{!-- maybe link instructor name to instructor's profile page --}}
+                            {{!-- link instructor name to instructor's profile page --}}
                             <li class="list-group-item">
                                 <h5 class="card-title">Instructor: {{Instructor.name}}</h5>
                             </li>
@@ -166,9 +165,6 @@
                             data-class-id={{id}}>
                             View Class
                         </button>
-                        {{!-- <a href="#" class="btn btn-secondary">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
-                        add a modal here to doublecheck user's click on delete button --}}
                     </div>
                 </div>
 
@@ -391,7 +387,8 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal"
                                 id="delete-close-btn">Nah, I'll
                                 keep it</button>
-                            <button type="button" class="btn btn-danger delete-btn">Yes, delete and notify students</button>
+                            <button type="button" class="btn btn-danger delete-btn">Yes, delete and notify
+                                students</button>
 
                         </div>
 
