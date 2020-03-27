@@ -56,4 +56,4 @@ const applySettings = () => {
         queryURL += encodeURIComponent(JSON.stringify(filterSettings));
         window.location.href = queryURL;
     });
-}
+};

@@ -42,11 +42,11 @@ $(document).ready(function () {
   // Otherwise we log any errors
   function signUpUser(name, email, password, instructor) {
     $.post("/api/signup", {
-      name: name,
-      email: email,
-      password: password,
-      instructor: instructor
-    })
+        name: name,
+        email: email,
+        password: password,
+        instructor: instructor
+      })
       .then(data => {
         console.log(data);
 
@@ -65,7 +65,7 @@ $(document).ready(function () {
     let msg = err.responseJSON.errors[0].message;
     console.log(msg)
     if (msg = "users.Users_email_unique must be unique") {
-      msg = "Email already taken."
+      msg = "Email already exist."
     }
     console.log(err)
     $("#alert .msg").text(msg); // { msg: 'messge' }.toString() ==> [object Object]

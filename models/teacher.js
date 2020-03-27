@@ -25,16 +25,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Instructor.associate = function (models) {
-
-        // Instructor.hasMany(models.Class, {
-        //     onDelete: "cascade"
-        // });
         Instructor.belongsTo(models.User);
-        // Instructor.belongsToMany(models.Class, {
-        //     through: "UserClass",
-        //     as: "instructor",
-        //     foreignKey: "instructorId",
-        // });
     };
     return Instructor;
 };

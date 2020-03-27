@@ -40,20 +40,15 @@ $(document).ready(function () {
 
   function createClass(topic, description, datetime, duration, capacity, price) {
     $.post("/api/instructors/add", {
-      topic: topic,
-      description: description,
-      datetime: datetime,
-      duration: duration,
-      capacity: capacity,
-      price: price,
-    })
+        topic: topic,
+        description: description,
+        datetime: datetime,
+        duration: duration,
+        capacity: capacity,
+        price: price,
+      })
       .then(data => {
-        // console.log(data)
-        //none of tese options actually reloads the page to show the last added class :(
         window.location.href = "/instructors"
-        // res.render("instructors")
-        // window.location.reload();
-        // window.location.replace("/instructors");
       })
       .catch(error => console.log(error));
   };
@@ -80,13 +75,10 @@ $(document).ready(function () {
       id: classid
     };
 
-    console.log(classData);
-
-
     $.ajax("/api/instructors/update", {
-      method: "PUT",
-      data: classData
-    })
+        method: "PUT",
+        data: classData
+      })
       .then(response => {
         console.log(response);
         if (response === "OK") {
@@ -104,9 +96,11 @@ $(document).ready(function () {
     console.log("hit", classid)
 
     $.ajax("/api/instructors/delete", {
-      method: "DELETE",
-      data: { id: classid }
-    })
+        method: "DELETE",
+        data: {
+          id: classid
+        }
+      })
       .then(response => {
         console.log(response);
         if (response === "OK") {
@@ -119,4 +113,3 @@ $(document).ready(function () {
   });
 
 });
-

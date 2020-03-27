@@ -1,10 +1,10 @@
-// Requiring our custom middleware for checking if a user is logged in
-// let isAuthenticated = require("../config/middleware/isAuthenticated");
+// Requiring our custom middleware for checking if and which type of user is logged in
+let isInstructor = require("../config/middleware/isInstructor");
+let isStudent = require("../config/middleware/isStudent");
+
 const db = require("../models");
 const insClassFilter = require("../lib/instructorFilter");
 const stuClassFilter = require("../lib/studentFilter");
-let isInstructor = require("../config/middleware/isInstructor");
-let isStudent = require("../config/middleware/isStudent");
 const moment = require('moment')
 
 module.exports = function (app) {
@@ -46,9 +46,6 @@ module.exports = function (app) {
         }
       });
 
-      console.log(dbClassValues)
-      console
-
       let hbsObject = {
         my: false,
         all: true,
@@ -69,8 +66,7 @@ module.exports = function (app) {
       res.render("instructors", {
         classes: dbClassValues
       });
-    })
-
+    });
   });
 
   // student filtered view route 
@@ -91,16 +87,12 @@ module.exports = function (app) {
         res.render("students", {
           classes: dbClassValues
         });
-      }
-    })
-
+      };
+    });
   });
 
   // homepage
   app.get('/', (req, res) => {
-
     res.render('index');
-
   });
-
-}
+};
