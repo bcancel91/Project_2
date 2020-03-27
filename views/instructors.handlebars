@@ -119,7 +119,7 @@
             <div class="classes-header">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
-                        <h2>All Classes</h2>
+                        <h2></h2>
 
                         {{!-- Search Bar --}}
 
@@ -145,11 +145,13 @@
             {{!-- All Classes --}}
             <div class="container classes-view">
                 {{#each classes}}
-                <div class="card">
+                <div class="card m-5">
                     <h5 class="card-header">{{topic}}</h5>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <p class="card-text">What you'll learn: {{description}}</p>
+                            <p class="card-text">What you'll learn:
+                                <br>
+                                {{description}}</p>
                             <br>
                             {{!-- link instructor name to instructor's profile page --}}
                             <li class="list-group-item">
@@ -261,7 +263,9 @@
                                     <h5 class="card-header">{{topic}}</h5>
                                     <div class="card-body">
                                         <ul class="list-group list-group-flush">
-                                            <p class="card-text">What you'll learn: {{description}}</p>
+                                            <p class="card-text">What you'll learn:
+                                                <br>
+                                                {{description}}</p>
                                             <br>
                                             {{!-- the line below will be visible only for getting all classes from all instructors --}}
                                             {{!-- maybe link instructor name to instructor's profile page --}}
@@ -270,7 +274,7 @@
                                             </li>
                                             <li class="list-group-item">Date and Time: {{datetime}}</li>
                                             <li class="list-group-item">Class Duration: {{duration}}</li>
-                                            <li class="list-group-item">Class Capacity: {{capacity}} persons</li>
+                                            <li class="list-group-item">Class Capacity: {{capacity}} people</li>
                                             <li class="list-group-item">Price: ${{price}}</li>
                                         </ul>
 
