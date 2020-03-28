@@ -57,7 +57,18 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="row jumbtron mt-3" id="about">
+    <div class="d-flex justify-content-center" id="buttonBox">
+            <button type="button" class="btn btn-primary login-modal-btn mt-4" data-toggle="modal"
+                data-target=".bd-example-modal-lg-1">Log
+                in</button>
+
+            <button type="button" class="btn btn-primary signup-modal-btn mt-4" data-toggle="modal"
+                data-target=".bd-example-modal-lg-1">Sign
+                up</button>
+
+        </div>
+    </div>
+    <div class="row jumbtron mt-3 d-flex justify-content-center" id="about">
 
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10 p-2 text-center">
 
@@ -68,16 +79,13 @@
                 link with others who have already mastered what you are learning.
                 Tutor others If you have a good grasp on coding, why not make your foundation and pocket stronger.
                 </p>
-                <h3>Bottom line...</h3>
-               <h6> Make your own positive work space </h6>  <h6> Set or pick your own hours </h6>  <h6> Learn at your convinence </h6>
-
-               
-      
-
+                <p>Students can fit their existing responsibilities and commitments, and can engage with multimedia content and learning materials at whatever time is most convenient to them. Even better: they don’t have to travel anywhere to study, they can simply log in to the app from the comfort of their own home, office or anywhere they with an internet connection.</p>
+                <p></p>
+                <p>Learning should be fast, simple and easy.</p>
 
    
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+        {{!-- <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
             <button type="button" class="btn btn-primary login-modal-btn mt-4" data-toggle="modal"
                 data-target=".bd-example-modal-lg-1">Log
                 in</button>
@@ -86,7 +94,7 @@
                 data-target=".bd-example-modal-lg-1">Sign
                 up</button>
 
-        </div>
+        </div> --}}
 
     </div>
 </div>
@@ -115,8 +123,8 @@
       <div class="coffee-medium__cup"></div>
     </div>
     <div class="coffee-footer"></div>
-  </div>
- --}}
+  </div> --}}
+
 
 
 
@@ -244,16 +252,24 @@
             </div>
         </div>
     </div>
+</div>
+
+
+
+
+
+
     <div class="container-fluid padding">
         <div class="row welcome text-center">
             <div class="col-12">
-                <h1 class="display-4 title1">LET LEARNING BE SIMPLE</h1>
+                <h1 class="display-4 title1">Bottom line...</h1>
                 <h1 class="espresso-1">Wait wait...</h1>
                 <h1 class="espresso-2">Quick expreso break</h1>
-                <p class="bulletPoints">We believe that there is something to learn from anyone.</p>
-                <p class="bulletPoints"> Organize tutoring environments to fit your schedule</p>
-                <p class="bulletPoints">Learning should be fast, simple and easy.</p>
 
+                 <h3 class="bulletPoints"></h3>
+               <h3 class="bulletPoints">Make your own positive work space </h3>  <h3 class="bulletPoints"> Set or pick your own hours </h3>  <h3 class="bulletPoints"> Learn at your convinence </h3>
+
+                
                 <div class="col-12 espresso">
 
     <div class="coffee-header">
@@ -277,18 +293,13 @@
 
 
         </div>
-
-
         
   </div>
-           
+        
 
-
-
-           
         </div>
     </div>
-</div>
+
 <!-- Profiles -->
 
 <div class="container-fluid padding profiles" id="contact">
@@ -319,7 +330,7 @@
                 <img class="card-imd-top profile2" src="">
                 <div class="card-body text-center">
                     <h4 class="card-title">Gus</h4>
-                    <p class="card-text">tons of exp</p>
+                    <p class="card-text">Javascript guru. Love dogs more than humans. I code for heath. Always learing.<br> <br></p>
                     <a href="#" class="btn btn-outline-secondary url2">View Github Profile<br><i
                             class="fab fa-github fa-1x"></i></a>
                 </div>
@@ -330,7 +341,9 @@
                 <img class="card-imd-top profile3" src="">
                 <div class="card-body text-center">
                     <h4 class="card-title">Brian</h4>
-                    <p class="card-text">tons of exp</p>
+                    <p class="card-text">Software developement student, excited to be here.
+                        <br> <br> 
+                        </p>
                     <a href="#" class="btn btn-outline-secondary url3">View Github Profile<br><i
                             class="fab fa-github fa-1x"></i></a>
                 </div>
