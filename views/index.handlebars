@@ -60,12 +60,19 @@
     <div class="row jumbtron mt-3" id="about">
 
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10 p-2">
+
             <p class="lead">
                 An online tutoring service that is available to you from anywhere. link with others who have
                 already mastered what you are learning. everyone is good at something in their own way, here at
                 tutorMe if you feel like you have a good grasp on a language or framework simply select from the
                 listed provided and let others learn from you.
+
+                Individual and unique learning experience.
+                Positive work space
             </p>
+      
+
+
             <p>Students are able to browse upcoming study sessions, send messages.</p>
             <p>Teachers are able to select material that they feel like they know and can teach others, make up
                 sessions that students can join, set prices for what they are teahing. are able to browse upcoming
@@ -84,6 +91,9 @@
 
     </div>
 </div>
+
+
+
 
 {{!-- coffee break --}}
 
@@ -110,10 +120,27 @@
  --}}
 
 
+
 <div class="container-fluid">
     <h1 class="display-4 text-center">Zoom in or out <i class="fas fa-plane-departure fa-f2"></i></h1>
     <div class="row">
         <div class="col-md-3 col-sm-12">
+
+            <h5 id="picText1">tutorMe from bed</h5>
+           <img class="worldPics" src="/images/pink-bedspread-inside-room-2351290.jpg">
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <img  class="worldPics" src="/images/turned-on-macbook-pro-on-brown-table-1580329.jpg">
+           <h5 id="picText2">tutorMe stress free</h5>
+        </div>
+        <div class="col-md-3 col-sm-12">
+             <h5 id="picText2">tutorMe right now...</h5>
+             <img class="worldPics" src="/images/man-wearing-gray-blazer-838413 (1).jpg">
+        </div>
+        <div class="col-md-3 col-sm-12">
+            <img  class="worldPics" src="/images/wrapped-toilet-paper-on-top-of-a-toilet-3944410.jpg">
+        <h5 id="picText4">tutorME from anywhere</h5>
+
             <img class="worldPics" src="/images/pink-bedspread-inside-room-2351290.jpg">
         </div>
         <div class="col-md-3 col-sm-12">
@@ -124,6 +151,7 @@
         </div>
         <div class="col-md-3 col-sm-12">
             <img class="worldPics" src="/images/wrapped-toilet-paper-on-top-of-a-toilet-3944410.jpg">
+
         </div>
     </div>
 </div>
@@ -398,6 +426,178 @@
             </div>
         </div>
 
+
+        </footer>
+
+        <script language="javascript" type="text/javascript">
+            // on click to change login page to signup page
+            const loginHere = () => {
+                $(".option-signup").fadeOut(100, () => {
+
+                    $(".option-login").fadeIn(100);
+                });
+            };
+
+            // on click to change signup page to login page
+            const signupHere = () => {
+                $(".option-login").fadeOut(100, () => {
+
+                    $(".option-signup").fadeIn(100);
+                });
+            };
+
+            const afterReady = ($) => {
+
+                // on click for login modal button
+                $(".login-modal-btn").on("click", event => {
+                    $(".option-signup").hide();
+                    $(".option-login").show();
+                });
+
+                // on click for signup modal button
+                $(".signup-modal-btn").on("click", event => {
+                    $(".option-login").hide();
+                    $(".option-signup").show();
+                });
+            }
+
+
+            $(document).ready(afterReady);
+        </script>
+
+        <script>
+
+           // espresso machine hide and show
+           
+            $(".espresso").hide();
+            $(".espresso-1").hide();
+            $(".espresso-2").hide();
+
+            setTimeout(function() {
+            $(".bulletPoints").fadeOut("fast");
+            $(".title1").fadeOut("fast");
+            $(".espresso-1").show();
+            }, 8000);
+
+             setTimeout(function() {
+            $(".espresso-2").show();
+            }, 10000);
+
+            setTimeout(function() {
+             $(".espresso").show();
+            }, 11500);
+
+             setTimeout(function() {
+            $(".espresso-1").hide();
+            $(".espresso-2").hide();
+             $(".espresso").hide();
+              $(".bulletPoints").fadeIn("fast");
+            $(".title1").fadeIn("fast");
+            }, 19785);
+
+             // what is tutorMe animation
+            // Wrap every letter in a span
+               
+            var textWrapper = document.querySelector('.ml11 .letters');
+            textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+            anime.timeline({ loop: true })
+                .add({
+                    targets: '.ml11 .line',
+                    scaleY: [0, 1],
+                    opacity: [0.5, 1],
+                    easing: "easeOutExpo",
+                    duration: 700
+                })
+                .add({
+                    targets: '.ml11 .line',
+                    translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+                    easing: "easeOutExpo",
+                    duration: 700,
+                    delay: 100
+                }).add({
+                    targets: '.ml11 .letter',
+                    opacity: [0, 1],
+                    easing: "easeOutExpo",
+                    duration: 600,
+                    offset: '-=775',
+                    delay: (el, i) => 34 * (i + 1)
+                }).add({
+                    targets: '.ml11',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+
+
+            var ml4 = {};
+            ml4.opacityIn = [0, 1];
+            ml4.scaleIn = [0.2, 1];
+            ml4.scaleOut = 2;
+            ml4.durationIn = 800;
+            ml4.durationOut = 600;
+            ml4.delay = 500;
+
+            anime.timeline({ loop: true })
+                .add({
+                    targets: '.ml4 .letters-1',
+                    opacity: ml4.opacityIn,
+                    scale: ml4.scaleIn,
+                    duration: ml4.durationIn
+                }).add({
+                    targets: '.ml4 .letters-1',
+                    opacity: 0,
+                    scale: ml4.scaleOut,
+                    duration: ml4.durationOut,
+                    easing: "easeInExpo",
+                    delay: ml4.delay
+                }).add({
+                    targets: '.ml4 .letters-2',
+                    opacity: ml4.opacityIn,
+                    scale: ml4.scaleIn,
+                    duration: ml4.durationIn
+                }).add({
+                    targets: '.ml4 .letters-2',
+                    opacity: 0,
+                    scale: ml4.scaleOut,
+                    duration: ml4.durationOut,
+                    easing: "easeInExpo",
+                    delay: ml4.delay
+                }).add({
+                    targets: '.ml4 .letters-3',
+                    opacity: ml4.opacityIn,
+                    scale: ml4.scaleIn,
+                    duration: ml4.durationIn
+                }).add({
+                    targets: '.ml4 .letters-3',
+                    opacity: 0,
+                    scale: ml4.scaleOut,
+                    duration: ml4.durationOut,
+                    easing: "easeInExpo",
+                    delay: ml4.delay
+                }).add({
+                    targets: '.ml4',
+                    opacity: 0,
+                    duration: 500,
+                    delay: 500
+                });
+
+
+              $('#demo').circleType({radius:135})
+
+    </script>
+       
+
+        <script src="/js/index.js"></script>
+        <script type="text/javascript" src="js/login.js"></script>
+        <script type="text/javascript" src="js/signup.js"></script>
+    </footer>
+
+
+
+    
+
 </footer>
 
 <script language="javascript" type="text/javascript">
@@ -553,3 +753,4 @@
 <script type="text/javascript" src="js/login.js"></script>
 <script type="text/javascript" src="js/signup.js"></script>
 </footer>
+
