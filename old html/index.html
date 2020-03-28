@@ -26,6 +26,8 @@
 
 
     <script language="javascript" type="text/javascript">
+
+
         // on click to change login page to signup page
         const loginHere = () => {
             $(".option-signup").fadeOut(100, () => {
@@ -106,7 +108,7 @@
                         </div>
                         <div class="col-1"></div>
                         <div class="col-5 text-center">
-                            <h1>Learn Anywhere with Zoom</h1>
+                            <h1 id="simple_arc">Learn Anywhere with Zoom</h1>
                             <a href="https://zoom.us/home?zcid=2478" src="_blank" class="bold-link"></a>
                             
                         </div>
@@ -374,6 +376,8 @@
         <script type="text/javascript" src="js/login.js"></script>
         <script type="text/javascript" src="js/signup.js"></script>
         <script>
+
+
                 // Wrap every letter in a span
 var textWrapper = document.querySelector('.ml11 .letters');
 textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
