@@ -59,9 +59,7 @@ module.exports = function (app) {
     });
 
     app.get("/api/instructors/search", isInstructor, (req, res) => {
-        let {
-            term
-        } = req.query;
+        let {term} = req.query;
         term = term.toLowerCase();
 
         db.Class.findAll({
@@ -77,7 +75,7 @@ module.exports = function (app) {
                 dbClassValues = dbClass.map(classObj => {
                   return {
                     ...classObj.dataValues,
-                    datetime: moment(classObj.dataValues.datetime).format("M/D/YYYY h:mm p"),
+                    datetime: moment(classObj.dataValues.datetime).format("M/D/YYYY h:mm a"),
                     Instructor: classObj.dataValues.Instructor.dataValues
                   }
                 });

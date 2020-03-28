@@ -39,9 +39,7 @@ module.exports = function (app) {
     // Search for classes
 
     app.get("/api/students/search", isStudent, (req, res) => {
-        let {
-            term
-        } = req.query;
+        let {term} = req.query;
         term = term.toLowerCase();
 
         db.Class.findAll({
@@ -55,11 +53,11 @@ module.exports = function (app) {
             .then(function (dbClass) {
 
                 dbClassValues = dbClass.map(classObj => {
-                  return {
-                    ...classObj.dataValues,
-                    datetime: moment(classObj.dataValues.datetime).format("M/D/YYYY h:mm a"),
-                    Instructor: classObj.dataValues.Instructor.dataValues
-                  }
+                    return {
+                        ...classObj.dataValues,
+                        datetime: moment(classObj.dataValues.datetime).format("M/D/YYYY h:mm a"),
+                        Instructor: classObj.dataValues.Instructor.dataValues
+                    }
                 });
 
                 res.render("students", {
@@ -69,4 +67,3 @@ module.exports = function (app) {
             .catch(err => console.log(err));
     });
 };
-
