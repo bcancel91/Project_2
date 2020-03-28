@@ -23,6 +23,11 @@ module.exports = function (app) {
         };
       });
 
+      dbClassValues = dbClassValues.map(classObj => {
+        classObj.Instructor.name = classObj.Instructor.name.replace(",", " ");
+        return classObj;
+      });
+
       console.log(dbClassValues)
       let hbsObject = {
         classes: dbClassValues
@@ -46,6 +51,11 @@ module.exports = function (app) {
         }
       });
 
+      dbClassValues = dbClassValues.map(classObj => {
+        classObj.Instructor.name = classObj.Instructor.name.replace(",", " ");
+        return classObj;
+      });
+
       let hbsObject = {
         my: false,
         all: true,
@@ -63,6 +73,10 @@ module.exports = function (app) {
     console.log(filterSettings);
 
     insClassFilter(req.user.id, filterSettings).then(dbClassValues => {
+      dbClassValues = dbClassValues.map(classObj => {
+        classObj.Instructor.name = classObj.Instructor.name.replace(",", " ");
+        return classObj;
+      });
       res.render("instructors", {
         classes: dbClassValues
       });
@@ -76,6 +90,10 @@ module.exports = function (app) {
     console.log(filterSettings);
 
     stuClassFilter(req.user.id, filterSettings).then(dbClassValues => {
+      dbClassValues = dbClassValues.map(classObj => {
+        classObj.Instructor.name = classObj.Instructor.name.replace(",", " ");
+        return classObj;
+      });
 
       if (filterSettings.classes === "my") {
         res.render("students", {
