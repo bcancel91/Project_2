@@ -1,13 +1,11 @@
 // This file offers a set of routes for displaying and saving classes data to the db
+
 const isInstructor = require('../config/middleware/isInstructor')
-// Requiring our models
 const db = require("../models");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 module.exports = function (app) {
-
-    // GET route for getting all of the classes
-
-
     // POST route for adding a new class
     app.post("/api/instructors/add", isInstructor, (req, res) => {
         console.log(req.user)
@@ -30,8 +28,7 @@ module.exports = function (app) {
                         res.render("instructors", hbsObject)
                     });
             });
-        })
-
+        });
     });
 
     app.put("/api/instructors/update", isInstructor, (req, res) => {
@@ -59,4 +56,23 @@ module.exports = function (app) {
             res.sendStatus(200);
         });
     });
-}
+
+    app.get("/api/instructors/search", isInstructor, (req, res) => {
+        let {
+            term
+        } = req.query;
+        term = term.toLowerCase();
+
+        db.Class.findAll({
+                where: {
+                    topic: {
+                        [Op.like]: "%" + term + "%"
+                    }
+                }
+            })
+            .then(classes => res.render("instructors", {
+                classes: classes.map(c => c.dataValues)
+            }))
+            .catch(err => console.log(err));
+    });
+};
