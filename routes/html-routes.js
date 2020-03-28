@@ -74,7 +74,8 @@ module.exports = function (app) {
 
     insClassFilter(req.user.id, filterSettings).then(dbClassValues => {
       dbClassValues = dbClassValues.map(classObj => {
-        classObj.Instructor.name = classObj.Instructor.name.replace(",", " ");
+        classObj.Instructor.name = classObj.Instructor.name.replace(",", " "),
+        classObj.datetime = moment(classObj.datetime).format("M/D/YYYY h:mm a")
         return classObj;
       });
       res.render("instructors", {
@@ -92,6 +93,7 @@ module.exports = function (app) {
     stuClassFilter(req.user.id, filterSettings).then(dbClassValues => {
       dbClassValues = dbClassValues.map(classObj => {
         classObj.Instructor.name = classObj.Instructor.name.replace(",", " ");
+        classObj.datetime = moment(classObj.datetime).format("M/D/YYYY h:mm a")
         return classObj;
       });
 
