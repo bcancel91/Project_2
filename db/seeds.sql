@@ -57,10 +57,10 @@ INSERT INTO students (email, name, UserId) VALUES
 -- select * from students;
   
 INSERT INTO classes (topic, description, datetime, duration, capacity, price, InstructorId) VALUES
-("Javascript 101", "You will learn how to use JavaScript to communicate with users, modify the Document Object Model (DOM), control program flow, validate forms, animate images, create cookies, change HTML on the fly, and communicate with databases.", "2020-04-15 4:30", 60, 20, 20, 1),
-("Node for beginners", "Node.js for Beginners: learn everything you need to become a Node.js Developer with practical exercises & projects", "2020-05-15 6:30", 90, 20, 30, 1),
-("Node Workshop", "You'll learn how asynchronous code works in Node and the Node event loop, as well as how to use the event emitter, streams, buffers, pipes, and work with files. We'll see how that leads to building a web server in Node.", "2020-06-15 8:30", 60, 20, 40, 2),
-("Express explained", "We'll dive into web sites, web apps and APIs with Express and learn how Express can save us time as Node developers.", "2020-04-15 4:30", 30, 20, 15, 3),
-("Handlebars: practical workshop", "Handlebars is the most widely used JavaScript templating library, supporting both client-side and server-side applications. In this course, Handlebars is covered from basic concepts all the way to production-ready tactics.", "2020-04-22 8:30", 90, 30, 40, 4),
-("Learn Git Branching in 20 minutes", "Learn to save and manage different versions of your code projects with this essential tool. Short introduction class.", "2020-04-22 5:30", 20, 30, 10, 3);
+("Javascript 101", "You will learn how to use JavaScript to communicate with users, modify the Document Object Model (DOM), control program flow, validate forms, animate images, create cookies, change HTML on the fly, and communicate with databases.", "4/15/2020 18:30", 60, 20, 20, 1),
+("Node for beginners", "Node.js for Beginners: learn everything you need to become a Node.js Developer with practical exercises & projects", "2020-05-15 16:30", 90, 20, 30, 1),
+("Node Workshop", "You'll learn how asynchronous code works in Node and the Node event loop, as well as how to use the event emitter, streams, buffers, pipes, and work with files. We'll see how that leads to building a web server in Node.", "2020-06-15 18:30", 60, 20, 40, 2),
+("Express explained", "We'll dive into web sites, web apps and APIs with Express and learn how Express can save us time as Node developers.", "2020-04-15 14:30", 30, 20, 15, 3),
+("Handlebars: practical workshop", "Handlebars is the most widely used JavaScript templating library, supporting both client-side and server-side applications. In this course, Handlebars is covered from basic concepts all the way to production-ready tactics.", "2020-04-22 18:30", 90, 30, 40, 4),
+("Learn Git Branching in 20 minutes", "Learn to save and manage different versions of your code projects with this essential tool. Short introduction class.", "2020-04-22 15:30", 20, 30, 10, 3);
 select * from classes;
