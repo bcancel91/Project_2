@@ -3,25 +3,28 @@ module.exports = function (sequelize, DataTypes) {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-
-            }
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
+            unique: 
+            {
+              args: true,
+              msg: "Email already taken!"
+            },
+            allowNull: {
+              args: false,
+              msg: "Please enter valid email."
+            },
             validate: {
-
+              isEmail: {
+                args: true,
+                msg: "Please enter valid email."
+              }
             }
-        }
+          }
     });
 
     Student.associate = function (models) {
-        // Student.belongsToMany(models.Class,
-        //      { through: "UserClass",
-        //      as: "students",
-        //      foreignKey: "studentId",
-        //      });
         Student.belongsTo(models.User);
     };
     return Student;

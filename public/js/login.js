@@ -25,9 +25,9 @@ $(document).ready(function () {
   // loginUser does a post to our "api/login" route and if successful, redirects us the the instructors page
   function loginUser(email, password) {
     $.post("/api/login", {
-      email: email,
-      password: password
-    })
+        email: email,
+        password: password
+      })
       .then(data => {
         // console.log(typeof data.instructor, data.instructor);
 
@@ -36,10 +36,11 @@ $(document).ready(function () {
         } else {
           window.location.replace("/students");
         }
-        // If there's an error, log the error
       })
       .catch(err => {
         console.log(err);
+        $("#alert1 .msg").text("Your username or password is incorrect.");
+        $("#alert1").fadeIn(500);
       });
   }
 });

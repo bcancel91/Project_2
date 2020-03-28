@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "tech1991",
+    "password": "gtroot",
     "database": "gq",
     "host": "127.0.0.1",
     "dialect": "mysql"

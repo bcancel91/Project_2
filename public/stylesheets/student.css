@@ -199,13 +199,3 @@ footer{
   .edit-class-form {
       display: none;
   }
-
-  li.selected a{
-      background-color: tomato;
-
-  }
-
-  #content {
-      padding-bottom: 0px;
-      padding-top: 0px;
-  }

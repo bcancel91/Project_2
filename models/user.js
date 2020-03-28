@@ -6,16 +6,32 @@ module.exports = function (sequelize, DataTypes) {
     // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+      unique: 
+      {
+        args: true,
+        msg: "Email already taken!"
+      },
+      allowNull: {
+        args: false,
+        msg: "Please enter valid email."
+      },
       validate: {
-        isEmail: true
+        isEmail: {
+          args: true,
+          msg: "Please enter valid email."
+        }
       }
     },
     // The password cannot be null
     password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        len: {
+          args: [8, 16],
+          msg: "Password must have a least 8 characters. Please try again."
+        }
+      }
     },
     // True if they are a instructor, false if they are student
     instructor: {
