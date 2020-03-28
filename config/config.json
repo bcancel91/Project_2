@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "gtroot",
+    "password": "gt2020",
     "database": "gq",
     "host": "127.0.0.1",
     "dialect": "mysql"
