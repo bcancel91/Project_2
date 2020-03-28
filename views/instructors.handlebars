@@ -119,18 +119,17 @@
             <div class="classes-header">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
-                        <h2></h2>
-
+    
                         {{!-- Search Bar --}}
 
-                        <form action="/api/instructors/search" class="search-form">
+                        <form style="float: left;" action="/api/instructors/search" class="search-form">
                             <i class="fas fa-search"></i>
                             <input type="search" name="term">
-                            <input type="submit" value="Search">
+                            <input type="submit" value="Search" class="btn btn-info">
                         </form>
 
                         <nav>
-                            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <button style="float: right;" type="button" id="sidebarCollapse" class="btn btn-info">
                                 <i class="fas fa-align-left"></i>
                                 <span>Filter Clases</span>
                             </button>
