@@ -4,6 +4,7 @@ const isStudent = require('../config/middleware/isStudent')
 const db = require("../models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
+const moment = require('moment');
 
 module.exports = function (app) {
 
@@ -48,14 +49,24 @@ module.exports = function (app) {
                     topic: {
                         [Op.like]: "%" + term + "%"
                     }
-                }
+                },
+                include: [db.Instructor]
             })
-            .then(classes => {
-                console.log(classes)
+            .then(function (dbClass) {
+
+                dbClassValues = dbClass.map(classObj => {
+                  return {
+                    ...classObj.dataValues,
+                    datetime: moment(classObj.dataValues.datetime).format("M/D/YYYY h:mm a"),
+                    Instructor: classObj.dataValues.Instructor.dataValues
+                  }
+                });
+
                 res.render("students", {
-                    classes: classes.map(c => c.dataValues)
+                    classes: dbClassValues
                 })
             })
             .catch(err => console.log(err));
     });
 };
+

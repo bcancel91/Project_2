@@ -4,6 +4,8 @@ const isInstructor = require('../config/middleware/isInstructor')
 const db = require("../models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
+const moment = require('moment');
+
 
 module.exports = function (app) {
     // POST route for adding a new class
@@ -68,11 +70,23 @@ module.exports = function (app) {
                     topic: {
                         [Op.like]: "%" + term + "%"
                     }
-                }
+                },
+                include: [db.Instructor]
             })
-            .then(classes => res.render("instructors", {
-                classes: classes.map(c => c.dataValues)
-            }))
+            .then(function (dbClass) {
+
+                dbClassValues = dbClass.map(classObj => {
+                  return {
+                    ...classObj.dataValues,
+                    datetime: moment(classObj.dataValues.datetime).format("M/D/YYYY h:mm a"),
+                    Instructor: classObj.dataValues.Instructor.dataValues
+                  }
+                });
+                
+                res.render("instructors", {
+                classes: dbClassValues
+            });
+        })
             .catch(err => console.log(err));
     });
 };

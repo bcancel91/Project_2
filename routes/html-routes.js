@@ -5,7 +5,7 @@ let isStudent = require("../config/middleware/isStudent");
 const db = require("../models");
 const insClassFilter = require("../lib/instructorFilter");
 const stuClassFilter = require("../lib/studentFilter");
-const moment = require('moment')
+const moment = require('moment');
 
 module.exports = function (app) {
 
