@@ -6,7 +6,6 @@ const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const moment = require('moment');
 
-
 module.exports = function (app) {
     // POST route for adding a new class
     app.post("/api/instructors/add", isInstructor, (req, res) => {
@@ -78,7 +77,7 @@ module.exports = function (app) {
                 dbClassValues = dbClass.map(classObj => {
                   return {
                     ...classObj.dataValues,
-                    datetime: moment(classObj.dataValues.datetime).format("M/D/YYYY h:mm a"),
+                    datetime: moment(classObj.dataValues.datetime).format("M/D/YYYY h:mm p"),
                     Instructor: classObj.dataValues.Instructor.dataValues
                   }
                 });
