@@ -72,10 +72,14 @@ html, body{
     background-color: black;
     border: 3px ridge white;
     color: white;
+    margin-bottom: 20px;
   }
   .btn-primary:hover {
     
-    border: 1px solid (9, 63, 9);
+    border:white 1px solid (9, 63, 9);
+    background-color: black;
+    transform: scale(4.0);
+    
   } 
   .jumbotron {
     padding: 1rem;
@@ -176,8 +180,14 @@ h5.background {
 background-color: black;
 padding: 2px;
 color: white;
+font-size: 20px;
 }
-
+.boxText{
+  border-style: outset;
+  border-width: 5px;
+  border-color: whitesmoke;
+  margin-bottom: 25px;
+}
 .worldPics {
   height: 160px;
   width: 185px;
@@ -189,7 +199,17 @@ color: white;
 .worldPics:hover {
   transform: scale(2.0); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
-
+.letter{
+  margin-top: 50px;
+}
+.buttonBox{
+  background-color: black;
+  border: 8px ridge white;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
 
 /* Espresso machine */
@@ -441,6 +461,7 @@ color: white;
   left: calc(50% - 47.5%);
   background-color: #41bdad;
   border-radius: 10px;
+  
 }
 .coffee-footer::after {
   content: "";
@@ -450,6 +471,7 @@ color: white;
   bottom: -25px;
   left: -8px;
   background-color: #000;
+ 
 }
 
 
